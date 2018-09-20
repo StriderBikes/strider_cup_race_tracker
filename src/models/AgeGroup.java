@@ -13,10 +13,12 @@ public class AgeGroup {
 	String group_title;
 	int num_gates;
 	int group_id;
+	int num_racers;
 	
-	public AgeGroup(String gt, int gID, int gates) {
+	public AgeGroup(String gt, int gID, int gates, int num_racers) {
 		this.group_id = gID;
 		this.group_title = gt;
 		this.num_gates = gates;
+		this.num_racers = num_racers;
 	}
 }

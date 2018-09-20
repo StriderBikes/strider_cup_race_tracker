@@ -23,6 +23,7 @@ public class MainView {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	JTree groupTree;
+	private JTextField textField;
 	/**
 	 * Launch the application.
 	 */
@@ -75,24 +76,31 @@ public class MainView {
 		frame.getContentPane().add(lblStriderCupRace, "cell 0 0,growx,aligny top");
 		
 		JLabel lblEnterTheAge = new JLabel("Enter the Age Group Title");
-		frame.getContentPane().add(lblEnterTheAge, "cell 0 2");
+		frame.getContentPane().add(lblEnterTheAge, "cell 0 1");
 		
 		textField_1 = new JTextField();
-		frame.getContentPane().add(textField_1, "cell 0 3,growx");
+		frame.getContentPane().add(textField_1, "cell 0 2,growx");
 		textField_1.setColumns(10);
-		
-		JLabel lblNumberOfStarting = new JLabel("Number of Starting Gates");
-		frame.getContentPane().add(lblNumberOfStarting, "cell 0 4");
-		
-		textField_2 = new JTextField();
-		frame.getContentPane().add(textField_2, "cell 0 5,growx");
-		textField_2.setColumns(10);
 
 
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Race Groups");
 		
+		JLabel lblNumberOfRacers = new JLabel("Number of Racers");
+		frame.getContentPane().add(lblNumberOfRacers, "cell 0 3");
+		
+		textField = new JTextField();
+		frame.getContentPane().add(textField, "cell 0 4,growx");
+		textField.setColumns(10);
+		
+		JLabel lblNumberOfStarting = new JLabel("Number of Starting Gates");
+		frame.getContentPane().add(lblNumberOfStarting, "cell 0 5");
+		
+		textField_2 = new JTextField();
+		frame.getContentPane().add(textField_2, "cell 0 6,growx");
+		textField_2.setColumns(10);
+		
 		JButton btnAddAgeGroup = new JButton("Add Age Group");
-		frame.getContentPane().add(btnAddAgeGroup, "cell 0 6");
+		frame.getContentPane().add(btnAddAgeGroup, "cell 0 7");
 		btnAddAgeGroup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("adding age group");
@@ -111,11 +119,22 @@ public class MainView {
 		System.out.println("add group clicked");
 		String groupTitle = this.textField_1.getText();
 		int num_gates = Integer.valueOf(this.textField_2.getText());
-		int new_id = this.cm.age_groups.size() + 1;
-		this.cm.age_groups.add(new AgeGroup(groupTitle, new_id, num_gates));
-		DefaultMutableTreeNode new_group = new DefaultMutableTreeNode(groupTitle);
-		
+		int new_id = this.cm.get_num_groups();
+		int num_racers = Integer.valueOf(this.textField.getText());
+		System.out.println(String.format("adding group id = %d to cup manager", new_id));
+		AgeGroup new_AG = new AgeGroup(groupTitle, new_id, num_gates, num_racers); //new age group object
+		this.cm.add_new_group(new_AG);
 	}
-
-	
+	public void add_age_group_to_tree(String gTitle, int gID, int gates, int racers) {
+		DefaultMutableTreeNode new_group = new DefaultMutableTreeNode(gTitle);
+		DefaultMutableTreeNode id_node = new DefaultMutableTreeNode(String.format("group id: %d", gID));
+		DefaultMutableTreeNode gate_node = new DefaultMutableTreeNode(String.format("gates: %d", gates));
+		DefaultMutableTreeNode racer_node = new DefaultMutableTreeNode(String.format("number 0f racers: ", racers));
+		new_group.add(id_node);
+		new_group.add(gate_node);
+		DefaultMutableTreeNode root_node = (DefaultMutableTreeNode)this.groupTree.getModel().getRoot();
+		root_node.add(new_group);
+		DefaultTreeModel new_model = (DefaultTreeModel)this.groupTree.getModel();
+		new_model.reload();
+	}
 }
