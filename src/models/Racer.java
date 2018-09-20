@@ -12,11 +12,12 @@ public class Racer {
 	String age_group_title;
 	
 	// constructors
-	public Racer(String newName, Integer newAge, String gName, Integer rID) {
+	public Racer(String newName, Integer newAge, String gName, Integer rID, Integer jersey) {
 		this.name = newName;
 		this.set_age(newAge);
 		this.gaurdName = gName;
 		this.racerID = rID;
+		this.jerseyNumber = jersey;
 	};
 	public Racer(int jersey_num) {
 		this.set_jersey_number(jersey_num);

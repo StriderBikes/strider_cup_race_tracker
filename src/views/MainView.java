@@ -13,13 +13,16 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import javax.swing.JTree;
 import java.awt.event.*;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.DefaultMutableTreeNode;
 public class MainView {
 
 	private JFrame frame;
-	private JTextField textField;
 
 	CupManager cm;
-	
+	private JTextField textField_1;
+	private JTextField textField_2;
+	JTree groupTree;
 	/**
 	 * Launch the application.
 	 */
@@ -48,7 +51,8 @@ public class MainView {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 905, 582);
+		this.cm = new CupManager();
+		frame.setBounds(100, 100, 888, 632);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -65,37 +69,53 @@ public class MainView {
 		
 		JMenuItem mntmSave = new JMenuItem("save");
 		mnFile.add(mntmSave);
-		frame.getContentPane().setLayout(new MigLayout("", "[883px,grow]", "[20px][][][][][][grow][][][]"));
+		frame.getContentPane().setLayout(new MigLayout("", "[883px,grow]", "[20px][][][][][][][][][163.00,grow][]"));
 		
 		JLabel lblStriderCupRace = new JLabel("Strider Cup Race Tracker");
 		frame.getContentPane().add(lblStriderCupRace, "cell 0 0,growx,aligny top");
 		
-		JLabel lblNumberOfRacers = new JLabel("Number of Racers");
-		frame.getContentPane().add(lblNumberOfRacers, "cell 0 2");
+		JLabel lblEnterTheAge = new JLabel("Enter the Age Group Title");
+		frame.getContentPane().add(lblEnterTheAge, "cell 0 2");
 		
-		textField = new JTextField();
-		frame.getContentPane().add(textField, "cell 0 3,growx");
-		textField.setColumns(10);
+		textField_1 = new JTextField();
+		frame.getContentPane().add(textField_1, "cell 0 3,growx");
+		textField_1.setColumns(10);
 		
-		JButton btnCreateCup = new JButton("Create Cup");
-		frame.getContentPane().add(btnCreateCup, "cell 0 4");
-		btnCreateCup.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("new cup manager created");
-			}
-		});
+		JLabel lblNumberOfStarting = new JLabel("Number of Starting Gates");
+		frame.getContentPane().add(lblNumberOfStarting, "cell 0 4");
 		
-		JTree tree = new JTree();
-		frame.getContentPane().add(tree, "cell 0 6,grow");
+		textField_2 = new JTextField();
+		frame.getContentPane().add(textField_2, "cell 0 5,growx");
+		textField_2.setColumns(10);
+
+
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Race Groups");
 		
 		JButton btnAddAgeGroup = new JButton("Add Age Group");
-		frame.getContentPane().add(btnAddAgeGroup, "cell 0 7");
+		frame.getContentPane().add(btnAddAgeGroup, "cell 0 6");
+		btnAddAgeGroup.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("adding age group");
+				add_age_group(e);
+			}
+		});
+		this.groupTree = new JTree(root);
+		frame.getContentPane().add(groupTree, "cell 0 9,grow");
+
+		JButton btnCreateEvent = new JButton("Create Event");
+		frame.getContentPane().add(btnCreateEvent, "cell 0 10");
 	}
 
-	private void create_cup_pressed(ActionEvent e) {
-		System.out.println("creating cup manager");
-		int new_part_count = Integer.valueOf(this.textField.getText());
-		this.cm = new CupManager(new_part_count);
+	// called by add age group action event
+	public void add_age_group(ActionEvent e) {
+		System.out.println("add group clicked");
+		String groupTitle = this.textField_1.getText();
+		int num_gates = Integer.valueOf(this.textField_2.getText());
+		int new_id = this.cm.age_groups.size() + 1;
+		this.cm.age_groups.add(new AgeGroup(groupTitle, new_id, num_gates));
+		DefaultMutableTreeNode new_group = new DefaultMutableTreeNode(groupTitle);
+		
 	}
+
 	
 }

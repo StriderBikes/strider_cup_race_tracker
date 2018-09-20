@@ -8,15 +8,14 @@ public class AgeGroup {
 	 * to derive number of participants in this age 
 	 * group
 	 */
-	
-	int[] racer_ids;
 	//empty races list, will be packed with method FillRaces()
 	Race[] race_list;
 	String group_title;
 	int num_gates;
+	int group_id;
 	
-	public AgeGroup(String gt, int[] r_ids, int gates) {
-		this.racer_ids = r_ids;
+	public AgeGroup(String gt, int gID, int gates) {
+		this.group_id = gID;
 		this.group_title = gt;
 		this.num_gates = gates;
 	}
