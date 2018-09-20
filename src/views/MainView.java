@@ -119,19 +119,21 @@ public class MainView {
 		System.out.println("add group clicked");
 		String groupTitle = this.textField_1.getText();
 		int num_gates = Integer.valueOf(this.textField_2.getText());
-		int new_id = this.cm.get_num_groups();
+		int new_id = this.cm.get_num_groups()+1;
 		int num_racers = Integer.valueOf(this.textField.getText());
 		System.out.println(String.format("adding group id = %d to cup manager", new_id));
 		AgeGroup new_AG = new AgeGroup(groupTitle, new_id, num_gates, num_racers); //new age group object
 		this.cm.add_new_group(new_AG);
+		this.add_age_group_to_tree(groupTitle, new_id, num_gates, num_racers);
 	}
 	public void add_age_group_to_tree(String gTitle, int gID, int gates, int racers) {
 		DefaultMutableTreeNode new_group = new DefaultMutableTreeNode(gTitle);
 		DefaultMutableTreeNode id_node = new DefaultMutableTreeNode(String.format("group id: %d", gID));
 		DefaultMutableTreeNode gate_node = new DefaultMutableTreeNode(String.format("gates: %d", gates));
-		DefaultMutableTreeNode racer_node = new DefaultMutableTreeNode(String.format("number 0f racers: ", racers));
+		DefaultMutableTreeNode racers_node = new DefaultMutableTreeNode(String.format("number of racers: %d", racers));
 		new_group.add(id_node);
 		new_group.add(gate_node);
+		new_group.add(racers_node);
 		DefaultMutableTreeNode root_node = (DefaultMutableTreeNode)this.groupTree.getModel().getRoot();
 		root_node.add(new_group);
 		DefaultTreeModel new_model = (DefaultTreeModel)this.groupTree.getModel();

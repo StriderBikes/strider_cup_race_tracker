@@ -1,4 +1,5 @@
 package models;
+import java.util.ArrayList;
 
 public class AgeGroup {
 	/**
@@ -9,11 +10,12 @@ public class AgeGroup {
 	 * group
 	 */
 	//empty races list, will be packed with method FillRaces()
-	Race[] race_list;
+	ArrayList<Race> race_list = new ArrayList<Race>();
+	ArrayList<Integer> racer_ids = new ArrayList<Integer>();
 	String group_title;
-	int num_gates;
-	int group_id;
-	int num_racers;
+	Integer num_gates;
+	Integer group_id;
+	Integer num_racers;
 	
 	public AgeGroup(String gt, int gID, int gates, int num_racers) {
 		this.group_id = gID;
@@ -21,4 +23,6 @@ public class AgeGroup {
 		this.num_gates = gates;
 		this.num_racers = num_racers;
 	}
+	
+	
 }
