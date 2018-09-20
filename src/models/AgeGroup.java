@@ -26,6 +26,9 @@ public class AgeGroup {
 		this.num_racers = num_racers;
 	}
 	
+	public String get_title() {
+		return this.group_title;
+	}
 	public void set_races() {
 		int num_races = this.num_racers / this.num_gates;
 		int leftovers = this.num_racers % this.num_gates;

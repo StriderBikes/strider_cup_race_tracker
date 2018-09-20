@@ -2,6 +2,7 @@ package models;
 import java.util.ArrayList;
 
 public class CupManager {
+	//class variables
 	private int racer_id_last = 101; //start our racer Ids at 101 so that they can be used as jersey nums too
 	private ArrayList<AgeGroup> age_groups = new ArrayList<AgeGroup>();
 	private ArrayList<Racer> racer_list = new ArrayList<Racer>();
@@ -33,6 +34,11 @@ public class CupManager {
 	public int get_num_groups() {
 		return this.age_groups.size();
 	}
+	
+	public AgeGroup get_age_group(int idx) {
+		return this.age_groups.get(idx);
+	}
+	
 	// handles logic associated with adding a new race group
 	public void add_new_group(AgeGroup a) {
 		for(int i = 0; i < a.num_racers; i++) {
