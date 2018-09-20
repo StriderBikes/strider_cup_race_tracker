@@ -1,4 +1,4 @@
-package raceStructs;
+package models;
 
 public class CupManager {
 	AgeGroup[] age_groups;
@@ -8,7 +8,8 @@ public class CupManager {
 	int heat_cutoff = 2;
 	
 	
-	CupManager(int num_participants){
+	public CupManager(int num_participants) {
+		// TODO Auto-generated constructor stub
 		this.participants = new Racer[num_participants];	
 		for(int i = 0; i < num_participants; i++) {
 			Racer newbie = new Racer(i);

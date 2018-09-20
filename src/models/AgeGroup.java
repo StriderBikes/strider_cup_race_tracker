@@ -1,4 +1,4 @@
-package raceStructs;
+package models;
 
 public class AgeGroup {
 	/**
