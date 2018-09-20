@@ -43,4 +43,9 @@ public class CupManager {
 		}
 	}
 	
+	public void set_up_cup() {
+		for(int ix = 0; ix < this.age_groups.size(); ix ++) {
+			this.age_groups.get(ix).set_races();
+		}
+	}
 }
