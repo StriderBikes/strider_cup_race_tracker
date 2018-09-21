@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Race {
 	private static int avg_race_time = 5;
-	Boolean timeOptimized = false;
-	Integer ageGroupId;
+	protected Boolean timeOptimized = false;
+	protected Integer ageGroupId;
 	private ArrayList<Racer> racerList = new ArrayList<Racer>();
 
 	//constructor

@@ -115,6 +115,7 @@ public class MainView {
 		btnCreateEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("create cup clicked");
+				set_up_races_and_goto_postsetup();
 			}
 		});
 	}
@@ -143,5 +144,12 @@ public class MainView {
 		root_node.add(new_group);
 		DefaultTreeModel new_model = (DefaultTreeModel)this.groupTree.getModel();
 		new_model.reload();
+	}
+	
+	public void set_up_races_and_goto_postsetup() {
+		for(int ix = 0; ix < this.cm.get_num_groups(); ix++) {
+			AgeGroup c_ag = this.cm.get_age_group(ix);
+			
+		}
 	}
 }

@@ -39,7 +39,7 @@ public class AgeGroup {
 			} 
 		}
 		for(int ix = 0; ix < num_races; ix++) {
-			
+			Race new_race = new Race();
 		}
 	}
 	
