@@ -112,6 +112,11 @@ public class MainView {
 
 		JButton btnCreateEvent = new JButton("Create Event");
 		frame.getContentPane().add(btnCreateEvent, "cell 0 10");
+		btnCreateEvent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("create cup clicked");
+			}
+		});
 	}
 
 	// called by add age group action event
