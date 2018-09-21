@@ -13,12 +13,16 @@ public class AgeGroup {
 	ArrayList<Race> heat_race_list = new ArrayList<Race>();
 	ArrayList<Race> main_race_list = new ArrayList<Race>();
 	ArrayList<Integer> racer_ids = new ArrayList<Integer>();
-	String group_title;
-	Integer num_gates;
-	Integer group_id;
-	Integer num_racers;
-	Integer heat_cutoff = 1;
+	ArrayList<Integer> race_cutoffs = new ArrayList<Integer>();
 	
+	String group_title;
+	private Integer num_gates;
+	private Integer group_id;
+	private Integer num_racers;
+	private Integer heat_cutoff = 1;
+	
+	
+	//constructor
 	public AgeGroup(String gt, int gID, int gates, int num_racers) {
 		this.group_id = gID;
 		this.group_title = gt;
@@ -39,8 +43,12 @@ public class AgeGroup {
 			} 
 		}
 		for(int ix = 0; ix < num_races; ix++) {
-			Race new_race = new Race();
+			Race new_race = new Race(this.group_id, String.format("this.group_title_%d", ix));
+			this.heat_race_list.add(new_race);
 		}
 	}
 	
+	public int get_gid() {
+		return this.group_id;
+	}
 }

@@ -7,10 +7,11 @@ public class Race {
 	protected Boolean timeOptimized = false;
 	protected Integer ageGroupId;
 	private ArrayList<Racer> racerList = new ArrayList<Racer>();
-
+	private String unique_race_id;
 	//constructor
-	public Race(Integer ageGroup) {
+	public Race(Integer ageGroup, String r_id) {
 		this.ageGroupId = ageGroup;
+		this.unique_race_id = r_id;
 	}
 	
 	//getter & setters
