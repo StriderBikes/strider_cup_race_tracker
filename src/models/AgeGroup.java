@@ -36,16 +36,26 @@ public class AgeGroup {
 	public void set_races() {
 		int num_races = this.num_racers / this.num_gates;
 		int leftovers = this.num_racers % this.num_gates;
+		if(num_races < this.num_gates) {
+			int g = this.num_gates/2;
+			if(this.num_racers % g == 0) {
+				num_races = this.num_racers / g;
+			} else {
+				num_races = (this.num_racers / g) + 1;
+			}
+		} else {
 		if(leftovers > 0) {
 			num_races += 1;
 			if((leftovers + (num_races*2)) < this.num_gates) {
 				num_races += 1;
 			} 
 		}
+		}
 		for(int ix = 0; ix < num_races; ix++) {
 			Race new_race = new Race(this.group_id, String.format("this.group_title_%d", ix));
 			this.heat_race_list.add(new_race);
 		}
+		System.out.println(String.format("created %d new heat races", num_races));
 	}
 	
 	public int get_gid() {

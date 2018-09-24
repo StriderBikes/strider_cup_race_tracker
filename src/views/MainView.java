@@ -157,12 +157,10 @@ public class MainView {
 	
 	public void set_up_races_and_goto_postsetup() {
 		System.out.println("still being implemented");
-		/*
 		for(int ix = 0; ix < this.cm.get_num_groups(); ix++) {
 			AgeGroup c_ag = this.cm.get_age_group(ix);
-			
+			c_ag.set_races();
 		}
-		*/
 	}
 	public void save_config(ActionEvent e) {
 		this.cm.save_as_groups_csv();
