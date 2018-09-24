@@ -30,14 +30,29 @@ public class AgeGroup {
 		this.num_racers = num_racers;
 	}
 	
+	//getters and setters
+	
+	public ArrayList<Race> get_heats() {
+		return this.heat_race_list;
+	}
+	
+	public String[] get_heat_ids() {
+		String[] id_strings = new String[this.heat_race_list.size()];
+		for(int x = 0; x < this.heat_race_list.size(); x++) {
+			id_strings[x] = this.heat_race_list.get(x).get_race_id();
+		}
+		return id_strings;
+	}
+	
 	public String get_title() {
 		return this.group_title;
 	}
 	public void set_races() {
-		int num_races = this.num_racers / this.num_gates;
-		int leftovers = this.num_racers % this.num_gates;
+		int g = this.num_gates;
+		int num_races = this.num_racers / g;
+		int leftovers = this.num_racers % g;
 		if(num_races < this.num_gates) {
-			int g = this.num_gates/2;
+			g = this.num_gates/2;
 			if(this.num_racers % g == 0) {
 				num_races = this.num_racers / g;
 			} else {
@@ -46,16 +61,32 @@ public class AgeGroup {
 		} else {
 		if(leftovers > 0) {
 			num_races += 1;
-			if((leftovers + (num_races*2)) < this.num_gates) {
+			if((leftovers + (num_races*2)) < g) {
 				num_races += 1;
 			} 
 		}
+		if (num_races > 20) {
+			g = g *2;
+			if(this.num_racers % g == 0) {
+				num_races = this.num_racers/g;
+			} else {
+				num_races = (this.num_racers / g) + 1;
+			}
+		}
 		}
 		for(int ix = 0; ix < num_races; ix++) {
-			Race new_race = new Race(this.group_id, String.format("this.group_title_%d", ix));
+			Race new_race = new Race(this.group_id, String.format(this.group_title +"_%d", ix));
 			this.heat_race_list.add(new_race);
 		}
-		System.out.println(String.format("created %d new heat races", num_races));
+		System.out.println(String.format("created %d new heat races for race group: %s", num_races, this.group_title));
+	}
+	
+	public String[] get_racer_ids() {
+		String[] out = new String[this.racer_ids.size()];
+		for(int x = 0; x < this.racer_ids.size(); x++) {
+			out[x] = Integer.toString(this.racer_ids.get(x));
+		}
+		return out;
 	}
 	
 	public int get_gid() {

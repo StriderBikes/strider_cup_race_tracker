@@ -28,4 +28,7 @@ public class Race {
 	public Boolean is_time_optimized() {
 		return this.timeOptimized;
 	}
+	public String get_race_id() {
+		return this.unique_race_id;
+	}
 }

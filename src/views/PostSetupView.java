@@ -10,6 +10,8 @@ import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
 
 public class PostSetupView {
 	CupManager cm;
@@ -18,11 +20,11 @@ public class PostSetupView {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args, CupManager cm) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PostSetupView window = new PostSetupView();
+					PostSetupView window = new PostSetupView(cm);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,8 +36,11 @@ public class PostSetupView {
 	/**
 	 * Create the application.
 	 */
-	public PostSetupView() {
+	public PostSetupView(CupManager cm) {
+		this.cm = cm;
 		initialize();
+		this.frame.setVisible(true);
+		this.setup_race_group_tabs();
 	}
 
 	/**
@@ -50,19 +55,20 @@ public class PostSetupView {
 		frame.getContentPane().add(this.tab_pane, BorderLayout.CENTER);
 		
 		JPanel panel = new JPanel();
-		this.tab_pane.addTab("New tab", null, panel, null);
+		this.tab_pane.addTab("Settings", null, panel, null);
 	}
 	
 	private void setup_race_group_tabs() {
 		for (int ix = 0; ix < this.cm.get_num_groups(); ix++) {
 			AgeGroup current_group = this.cm.get_age_group(ix);
 			JPanel group_panel = new JPanel();
+			JList racer_list = new JList(current_group.get_racer_ids());
+			JList race_list = new JList(current_group.get_heat_ids());
+			group_panel.add(new JLabel("race list:"));
+			group_panel.add(new JScrollPane(race_list));
+			group_panel.add(new JLabel("racer list"));
+			group_panel.add(new JScrollPane(racer_list));
 			this.tab_pane.addTab(current_group.get_title(), null, group_panel, null);
 		}
 	}
-	
-	private void PostSetupView(CupManager cup_manager) {
-		this.cm = cup_manager;
-	}
-
 }
