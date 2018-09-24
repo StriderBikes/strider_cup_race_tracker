@@ -1,6 +1,7 @@
 package models;
 import java.util.ArrayList;
-
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 public class CupManager {
 	//class variables
 	private int racer_id_last = 101; //start our racer Ids at 101 so that they can be used as jersey nums too
@@ -41,17 +42,37 @@ public class CupManager {
 	
 	// handles logic associated with adding a new race group
 	public void add_new_group(AgeGroup a) {
-		for(int i = 0; i < a.num_racers; i++) {
+		for(int i = 0; i < a.get_num_racers(); i++) {
 			this.racer_id_last = this.racer_id_last + 1;
 			Racer newest = new Racer(this.racer_id_last);
 			a.racer_ids.add(this.racer_id_last);
 			this.racer_list.add(newest);
 		}
+		this.age_groups.add(a);
 	}
 	
 	public void set_up_cup() {
 		for(int ix = 0; ix < this.age_groups.size(); ix ++) {
 			this.age_groups.get(ix).set_races();
+		}
+	}
+	public void save_as_groups_csv() {
+		try {
+			PrintWriter pw = new PrintWriter("race_group_config.csv");
+			String first_line = "GroupName, number_of_racers, number_of_starting_gates";
+			pw.println(first_line);
+			System.out.println(this.age_groups.size());
+			for(int l = 0; l < this.age_groups.size(); l++) {
+				AgeGroup current = this.age_groups.get(l);
+				String current_line = current.group_title + ", " + Integer.toString(current.get_num_racers()) + ", " + Integer.toString(current.get_num_gates());
+				System.out.println(current_line);
+				pw.println(current_line);
+			}
+			System.out.println("successfully saved config");
+			pw.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

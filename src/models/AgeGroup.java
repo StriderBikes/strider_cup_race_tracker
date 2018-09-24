@@ -51,4 +51,10 @@ public class AgeGroup {
 	public int get_gid() {
 		return this.group_id;
 	}
+	public int get_num_racers() {
+		return this.num_racers;
+	}
+	public int get_num_gates() {
+		return this.num_gates;
+	}
 }

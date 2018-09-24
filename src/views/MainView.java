@@ -70,7 +70,7 @@ public class MainView {
 		
 		JMenuItem mntmSave = new JMenuItem("save");
 		mnFile.add(mntmSave);
-		frame.getContentPane().setLayout(new MigLayout("", "[883px,grow]", "[20px][][][][][][][][][163.00,grow][]"));
+		frame.getContentPane().setLayout(new MigLayout("", "[883px,grow]", "[20px][][][][][][][][163.00,grow][][]"));
 		
 		JLabel lblStriderCupRace = new JLabel("Strider Cup Race Tracker");
 		frame.getContentPane().add(lblStriderCupRace, "cell 0 0,growx,aligny top");
@@ -108,10 +108,19 @@ public class MainView {
 			}
 		});
 		this.groupTree = new JTree(root);
-		frame.getContentPane().add(groupTree, "cell 0 9,grow");
+		frame.getContentPane().add(groupTree, "cell 0 8,grow");
 
 		JButton btnCreateEvent = new JButton("Create Event");
-		frame.getContentPane().add(btnCreateEvent, "cell 0 10");
+		frame.getContentPane().add(btnCreateEvent, "flowx,cell 0 9");
+		
+		JButton btnSaveGroupConfige = new JButton("Save Group Config");
+		btnSaveGroupConfige.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("filesavetriggered");
+				save_config(arg0);
+			}
+		});
+		frame.getContentPane().add(btnSaveGroupConfige, "cell 0 9");
 		btnCreateEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("create cup clicked");
@@ -147,9 +156,15 @@ public class MainView {
 	}
 	
 	public void set_up_races_and_goto_postsetup() {
+		System.out.println("still being implemented");
+		/*
 		for(int ix = 0; ix < this.cm.get_num_groups(); ix++) {
 			AgeGroup c_ag = this.cm.get_age_group(ix);
 			
 		}
+		*/
+	}
+	public void save_config(ActionEvent e) {
+		this.cm.save_as_groups_csv();
 	}
 }
