@@ -15,6 +15,10 @@ import javax.swing.JTree;
 import java.awt.event.*;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class MainView {
 
 	private JFrame frame;
@@ -134,8 +138,12 @@ public class MainView {
 		System.out.println("add group clicked");
 		String groupTitle = this.textField_1.getText();
 		int num_gates = Integer.valueOf(this.textField_2.getText());
-		int new_id = this.cm.get_num_groups()+1;
+		//int new_id = this.cm.get_num_groups()+1;
 		int num_racers = Integer.valueOf(this.textField.getText());
+		this.add_age_group_to_manager(groupTitle, num_gates, num_racers);
+	}
+	public void add_age_group_to_manager(String groupTitle, int num_gates, int num_racers) {
+		int new_id = this.cm.get_num_groups()+1;
 		System.out.println(String.format("adding group id = %d to cup manager", new_id));
 		AgeGroup new_AG = new AgeGroup(groupTitle, new_id, num_gates, num_racers); //new age group object
 		this.cm.add_new_group(new_AG);
@@ -165,5 +173,8 @@ public class MainView {
 	}
 	public void save_config(ActionEvent e) {
 		this.cm.save_as_groups_csv();
+	}
+	public void load_saved_config(ActionEvent e) {
+		
 	}
 }
