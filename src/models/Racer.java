@@ -1,22 +1,20 @@
 package models;
 
 public class Racer {
-	String name;
+	String racer_name = "";
 	private Integer age;
-	String gaurdName;
+	String gaurdName = "";
 	Integer racerID;
 	private Integer jerseyNumber;
 	Integer ageGroupId;
-	Integer lastRaceID = 0;
-	Integer lastRacePlace = 0;
-	String age_group_title;
+	private String lastRaceID = "";
+	private Integer lastRacePlace = 0;
+	String age_group_title = "";
 	
 	// constructors
-	public Racer(String newName, Integer newAge, String gName, Integer rID, Integer jersey) {
-		this.name = newName;
-		this.set_age(newAge);
+	public Racer( String gName, Integer groupID, Integer jersey) {
 		this.gaurdName = gName;
-		this.racerID = rID;
+		this.racerID = groupID;
 		this.jerseyNumber = jersey;
 	};
 	public Racer(int jersey_num) {
@@ -42,4 +40,16 @@ public class Racer {
 	public void add_to_age_group(Integer gID) {
 		this.ageGroupId = gID;
 	};
+	
+	public void set_heat_finish(String unique_race, Integer place) {
+		this.lastRaceID = unique_race;
+		this.lastRacePlace = place;
+	}
+	public String get_last_race_id() {
+		return this.lastRaceID;
+	}
+	public int get_last_race_finish_place() {
+		return this.lastRacePlace;
+	}
+	
 }

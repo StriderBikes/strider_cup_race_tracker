@@ -51,7 +51,11 @@ public class MainView {
 	public MainView() {
 		initialize();
 	}
-	
+	/**
+	 * constructor overloading with cupManager object so we can reuse 
+	 * this UI to edit the groups after the fact
+	 * @param cupM
+	 */
 	public MainView(CupManager cupM) {
 		this.cm = cupM;
 		initialize();
@@ -151,6 +155,7 @@ public class MainView {
 		// create button and the action to grab the most recently save group config
 		JButton btnImportFromSaved = new JButton("Import From Saved Config");
 		frame.getContentPane().add(btnImportFromSaved, "cell 0 9");
+
 		btnImportFromSaved.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -162,6 +167,9 @@ public class MainView {
 				}
 			}
 		});
+		
+		JButton btnDeleteSelected = new JButton("Delete Selected");
+		frame.getContentPane().add(btnDeleteSelected, "cell 0 9");
 	}
 
 	// called by add age group action event
