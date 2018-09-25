@@ -8,10 +8,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.*;
 
@@ -78,18 +75,6 @@ public class PostSetupView {
 	private void setup_race_group_tabs() {
 		for (int ix = 0; ix < this.cm.get_num_groups(); ix++) {
 			AgeGroup current_group = this.cm.get_age_group(ix);
-			JPanel group_panel = new JPanel();
-			JList racer_list = new JList(current_group.get_racer_ids());
-			JList race_list = new JList(current_group.get_heat_ids());
-			JButton edit_race = new JButton("edit/view race");
-			JButton edit_racer = new JButton("edit/view racer");
-			group_panel.add(new JLabel("race list:"));
-			group_panel.add(edit_race);
-			group_panel.add(new JScrollPane(race_list));
-			group_panel.add(edit_racer);
-			group_panel.add(new JLabel("racer list"));
-			group_panel.add(new JScrollPane(racer_list));
-			this.tab_pane.addTab(current_group.get_title(), null, group_panel, null);
 		}
 	}
 	
