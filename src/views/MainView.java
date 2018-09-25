@@ -55,23 +55,25 @@ public class MainView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		// set up view and initialize data objects
 		frame = new JFrame();
 		this.cm = new CupManager();
 		frame.setBounds(100, 100, 888, 632);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		// set up menue bar, not used at this time
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
-		
+		//menu that will likely be removed
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
 		JMenuItem mntmImport = new JMenuItem("Import");
 		mnFile.add(mntmImport);
-		
+		/* our save button will effectively be an export of a csv commenting 
+		 * this out as such
 		JMenuItem mntmExport = new JMenuItem("Export");
 		mnFile.add(mntmExport);
-		
+		*/
 		JMenuItem mntmSave = new JMenuItem("save");
 		mnFile.add(mntmSave);
 		frame.getContentPane().setLayout(new MigLayout("", "[883px,grow]", "[20px][][][][][][][][163.00,grow][][]"));
@@ -142,7 +144,7 @@ public class MainView {
 		int num_racers = Integer.valueOf(this.textField.getText());
 		this.add_age_group_to_manager(groupTitle, num_gates, num_racers);
 	}
-	// creates new group object instance and adds it to the group array held by GroupManager
+	// creates new group object instance and adds it to the group array held by CupManager
 	public void add_age_group_to_manager(String groupTitle, int num_gates, int num_racers) {
 		int new_id = this.cm.get_num_groups()+1;
 		System.out.println(String.format("adding group id = %d to cup manager", new_id));
@@ -170,10 +172,11 @@ public class MainView {
 			AgeGroup c_ag = this.cm.get_age_group(ix);
 			c_ag.set_races();
 		}
+		// this initializes our new view, and passes our cupmanager into the view
 		PostSetupView new_view = new PostSetupView(this.cm);
 		this.frame.setVisible(false);
 	}
-	// used to call method on GroupManager that saves its groups as a csv
+	// used to call method on CupManager that saves its groups as a csv
 	public void save_config(ActionEvent e) {
 		this.cm.save_as_groups_csv();
 	}
