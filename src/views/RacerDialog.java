@@ -1,124 +1,140 @@
 package views;
 import models.*;
-import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.jface.dialogs.IDialogConstants;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.layout.GridData;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 
-public class RacerDialog extends Dialog {
-	
-	Racer the_racer;
-	private Text text;
-	private Text text_1;
-	private Text text_2;
-	private Text text_3;
-	private Text text_4;
-	private Text text_5;
-	private Text text_6;
-	private Text text_7;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class RacerDialog extends JDialog {
+
+	private final JPanel contentPanel = new JPanel();
+	private Racer racer;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args, Racer con_racer) {
+		try {
+			RacerDialog dialog = new RacerDialog(con_racer);
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Create the dialog.
-	 * @param parentShell
 	 */
-	public RacerDialog(Shell parentShell, Racer racer) {
-		super(parentShell);
-		this.the_racer = racer;
+	public RacerDialog(Racer con_racer) {
+		this.racer = con_racer;
+		setBounds(100, 100, 607, 473);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(new MigLayout("", "[][grow]", "[][][][][][][][]"));
+		{
+			JLabel lblRacerName = new JLabel("Racer Name:");
+			contentPanel.add(lblRacerName, "cell 0 0,alignx trailing");
+		}
+		{
+			textField = new JTextField();
+			contentPanel.add(textField, "cell 1 0,growx");
+			textField.setColumns(10);
+		}
+		{
+			JLabel lblJersey = new JLabel("Jersey # / ID");
+			contentPanel.add(lblJersey, "cell 0 1,alignx trailing");
+		}
+		{
+			textField_1 = new JTextField();
+			contentPanel.add(textField_1, "cell 1 1,growx");
+			textField_1.setColumns(10);
+		}
+		{
+			JLabel lblGaurdianName = new JLabel("Gaurdian Name");
+			contentPanel.add(lblGaurdianName, "cell 0 2,alignx trailing");
+		}
+		{
+			textField_2 = new JTextField();
+			contentPanel.add(textField_2, "cell 1 2,growx");
+			textField_2.setColumns(10);
+		}
+		{
+			JLabel lblGroupId = new JLabel("Group ID");
+			contentPanel.add(lblGroupId, "cell 0 3,alignx trailing");
+		}
+		{
+			textField_3 = new JTextField();
+			contentPanel.add(textField_3, "cell 1 3,growx");
+			textField_3.setColumns(10);
+		}
+		{
+			JLabel lblHeatId = new JLabel("Heat ID");
+			contentPanel.add(lblHeatId, "cell 0 4,alignx trailing");
+		}
+		{
+			textField_4 = new JTextField();
+			contentPanel.add(textField_4, "cell 1 4,growx");
+			textField_4.setColumns(10);
+		}
+		{
+			JLabel lblHeatFinish = new JLabel("Heat Finish");
+			contentPanel.add(lblHeatFinish, "cell 0 5,alignx trailing");
+		}
+		{
+			textField_5 = new JTextField();
+			contentPanel.add(textField_5, "cell 1 5,growx");
+			textField_5.setColumns(10);
+		}
+		{
+			JLabel lblMainId = new JLabel("Main ID");
+			contentPanel.add(lblMainId, "cell 0 6,alignx trailing");
+		}
+		{
+			textField_7 = new JTextField();
+			contentPanel.add(textField_7, "cell 1 6,growx");
+			textField_7.setColumns(10);
+		}
+		{
+			JLabel lblMainFinish = new JLabel("Main Finish");
+			contentPanel.add(lblMainFinish, "cell 0 7,alignx trailing");
+		}
+		{
+			textField_6 = new JTextField();
+			contentPanel.add(textField_6, "cell 1 7,growx");
+			textField_6.setColumns(10);
+		}
+		{
+			JPanel buttonPane = new JPanel();
+			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			{
+				JButton okButton = new JButton("OK");
+				okButton.setActionCommand("OK");
+				buttonPane.add(okButton);
+				getRootPane().setDefaultButton(okButton);
+			}
+			{
+				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setActionCommand("Cancel");
+				buttonPane.add(cancelButton);
+			}
+		}
 	}
 
-	/**
-	 * Create contents of the dialog.
-	 * @param parent
-	 */
-	@Override
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		GridLayout gridLayout = (GridLayout) container.getLayout();
-		gridLayout.numColumns = 2;
-		
-		Label lblRacerName = new Label(container, SWT.NONE);
-		lblRacerName.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblRacerName.setText("Racer Name");
-		
-		text_5 = new Text(container, SWT.BORDER).setText(this.the_racer.name);
-		text_5.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
-		Label lblWouldYouLike = new Label(container, SWT.NONE);
-		lblWouldYouLike.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblWouldYouLike.setText("Racer Jersey/ID");
-		
-		text = new Text(container, SWT.BORDER);
-		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
-		Label lblRacerGaurdianName = new Label(container, SWT.NONE);
-		lblRacerGaurdianName.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblRacerGaurdianName.setText("Racer Gaurdian Name");
-		
-		text_1 = new Text(container, SWT.BORDER);
-		text_1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
-		Label lblRacerGroupId = new Label(container, SWT.NONE);
-		lblRacerGroupId.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblRacerGroupId.setText("Racer Group Id");
-		
-		text_2 = new Text(container, SWT.BORDER);
-		text_2.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
-		Label lblHeatRaceId = new Label(container, SWT.NONE);
-		lblHeatRaceId.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblHeatRaceId.setText("Heat Race Id");
-		
-		text_3 = new Text(container, SWT.BORDER);
-		text_3.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
-		Label lblFinalsRaceId = new Label(container, SWT.NONE);
-		lblFinalsRaceId.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblFinalsRaceId.setText("Finals Race ID");
-		
-		text_4 = new Text(container, SWT.BORDER);
-		text_4.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
-		Label lblHeatFinish = new Label(container, SWT.NONE);
-		lblHeatFinish.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblHeatFinish.setText("Heat Finish");
-		
-		text_6 = new Text(container, SWT.BORDER);
-		text_6.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
-		Label lblFinalsFinish = new Label(container, SWT.NONE);
-		lblFinalsFinish.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblFinalsFinish.setText("Finals Finish");
-		
-		text_7 = new Text(container, SWT.BORDER);
-		text_7.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-
-		return container;
-	}
-
-	/**
-	 * Create contents of the button bar.
-	 * @param parent
-	 */
-	@Override
-	protected void createButtonsForButtonBar(Composite parent) {
-		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
-		createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
-	}
-
-	/**
-	 * Return the initial size of the dialog.
-	 */
-	@Override
-	protected Point getInitialSize() {
-		return new Point(656, 577);
-	}
-
-	
 }

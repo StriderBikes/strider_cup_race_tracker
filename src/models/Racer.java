@@ -20,6 +20,9 @@ public class Racer {
 	public Racer(int jersey_num) {
 		this.set_jersey_number(jersey_num);
 	}
+	public Racer() {
+		return;
+	}
 	
 	// getters and setters
 	public void set_age(int a) {
