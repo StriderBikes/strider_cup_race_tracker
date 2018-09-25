@@ -142,6 +142,7 @@ public class MainView {
 		int num_racers = Integer.valueOf(this.textField.getText());
 		this.add_age_group_to_manager(groupTitle, num_gates, num_racers);
 	}
+	// creates new group object instance and adds it to the group array held by GroupManager
 	public void add_age_group_to_manager(String groupTitle, int num_gates, int num_racers) {
 		int new_id = this.cm.get_num_groups()+1;
 		System.out.println(String.format("adding group id = %d to cup manager", new_id));
@@ -149,6 +150,7 @@ public class MainView {
 		this.cm.add_new_group(new_AG);
 		this.add_age_group_to_tree(groupTitle, new_id, num_gates, num_racers);
 	}
+	// adds the values that were used to create the new group object to the tree display
 	public void add_age_group_to_tree(String gTitle, int gID, int gates, int racers) {
 		DefaultMutableTreeNode new_group = new DefaultMutableTreeNode(gTitle);
 		DefaultMutableTreeNode id_node = new DefaultMutableTreeNode(String.format("group id: %d", gID));
@@ -162,7 +164,7 @@ public class MainView {
 		DefaultTreeModel new_model = (DefaultTreeModel)this.groupTree.getModel();
 		new_model.reload();
 	}
-	
+	// this is triggered by the create Event button and changes to our tab panel screen
 	public void set_up_races_and_goto_postsetup() {
 		for(int ix = 0; ix < this.cm.get_num_groups(); ix++) {
 			AgeGroup c_ag = this.cm.get_age_group(ix);
@@ -171,6 +173,7 @@ public class MainView {
 		PostSetupView new_view = new PostSetupView(this.cm);
 		this.frame.setVisible(false);
 	}
+	// used to call method on GroupManager that saves its groups as a csv
 	public void save_config(ActionEvent e) {
 		this.cm.save_as_groups_csv();
 	}
