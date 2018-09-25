@@ -52,7 +52,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblRacerName, "cell 0 0,alignx trailing");
 		}
 		{
-			textField = new JTextField();
+			textField = new JTextField(this.racer.get_racer_name());
 			contentPanel.add(textField, "cell 1 0,growx");
 			textField.setColumns(10);
 		}
@@ -61,7 +61,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblJersey, "cell 0 1,alignx trailing");
 		}
 		{
-			textField_1 = new JTextField();
+			textField_1 = new JTextField(this.racer.get_jersey_number());
 			contentPanel.add(textField_1, "cell 1 1,growx");
 			textField_1.setColumns(10);
 		}
@@ -70,7 +70,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblGaurdianName, "cell 0 2,alignx trailing");
 		}
 		{
-			textField_2 = new JTextField();
+			textField_2 = new JTextField(this.racer.get_racer_gaurdian());
 			contentPanel.add(textField_2, "cell 1 2,growx");
 			textField_2.setColumns(10);
 		}
@@ -79,7 +79,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblGroupId, "cell 0 3,alignx trailing");
 		}
 		{
-			textField_3 = new JTextField();
+			textField_3 = new JTextField(this.racer.get_racer_group_id());
 			contentPanel.add(textField_3, "cell 1 3,growx");
 			textField_3.setColumns(10);
 		}
@@ -88,7 +88,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblHeatId, "cell 0 4,alignx trailing");
 		}
 		{
-			textField_4 = new JTextField();
+			textField_4 = new JTextField(this.racer.get_heat_id());
 			contentPanel.add(textField_4, "cell 1 4,growx");
 			textField_4.setColumns(10);
 		}
@@ -97,7 +97,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblHeatFinish, "cell 0 5,alignx trailing");
 		}
 		{
-			textField_5 = new JTextField();
+			textField_5 = new JTextField(this.racer.get_heat_finish());
 			contentPanel.add(textField_5, "cell 1 5,growx");
 			textField_5.setColumns(10);
 		}
@@ -106,7 +106,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblMainId, "cell 0 6,alignx trailing");
 		}
 		{
-			textField_7 = new JTextField();
+			textField_7 = new JTextField(this.racer.get_finals_id());
 			contentPanel.add(textField_7, "cell 1 6,growx");
 			textField_7.setColumns(10);
 		}
@@ -115,7 +115,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblMainFinish, "cell 0 7,alignx trailing");
 		}
 		{
-			textField_6 = new JTextField();
+			textField_6 = new JTextField(this.racer.get_finals_finish());
 			contentPanel.add(textField_6, "cell 1 7,growx");
 			textField_6.setColumns(10);
 		}
