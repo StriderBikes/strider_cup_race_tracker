@@ -65,8 +65,11 @@ public class CupManager {
 			System.out.println(this.age_groups.size());
 			for(int l = 0; l < this.age_groups.size(); l++) {
 				AgeGroup current = this.age_groups.get(l);
-				String current_line = current.group_title + ", " + Integer.toString(current.get_num_racers()) + ", " + Integer.toString(current.get_num_gates());
+				String current_line = current.group_title + "," + Integer.toString(current.get_num_racers()) + "," + Integer.toString(current.get_num_gates())+",";
 				System.out.println(current_line);
+				if(l + 1 == this.age_groups.size()) {
+					current_line = current_line.substring(0, current_line.length() - 1);
+				}
 				pw.println(current_line);
 			}
 			System.out.println("successfully saved config");

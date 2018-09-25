@@ -18,6 +18,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class MainView {
 
@@ -50,6 +51,16 @@ public class MainView {
 	public MainView() {
 		initialize();
 	}
+	
+	public MainView(CupManager cupM) {
+		this.cm = cupM;
+		initialize();
+		this.frame.setVisible(true);
+		for(int x = 0; x < cupM.get_num_groups(); x++) {
+			AgeGroup ag = cupM.get_age_group(x);
+			this.add_age_group_to_tree(ag.get_title(), ag.get_gid(), ag.get_num_gates(), ag.get_num_racers());
+		}
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -69,11 +80,13 @@ public class MainView {
 		
 		JMenuItem mntmImport = new JMenuItem("Import");
 		mnFile.add(mntmImport);
+		
 		/* our save button will effectively be an export of a csv commenting 
 		 * this out as such
 		JMenuItem mntmExport = new JMenuItem("Export");
 		mnFile.add(mntmExport);
 		*/
+		
 		JMenuItem mntmSave = new JMenuItem("save");
 		mnFile.add(mntmSave);
 		frame.getContentPane().setLayout(new MigLayout("", "[883px,grow]", "[20px][][][][][][][][163.00,grow][][]"));
@@ -127,10 +140,26 @@ public class MainView {
 			}
 		});
 		frame.getContentPane().add(btnSaveGroupConfige, "cell 0 9");
+		
+
 		btnCreateEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("create cup clicked");
 				set_up_races_and_goto_postsetup();
+			}
+		});
+		// create button and the action to grab the most recently save group config
+		JButton btnImportFromSaved = new JButton("Import From Saved Config");
+		frame.getContentPane().add(btnImportFromSaved, "cell 0 9");
+		btnImportFromSaved.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					load_saved_config();
+				} 
+				catch (FileNotFoundException err) {
+					// TODO Auto-generated catch block
+					err.printStackTrace();
+				}
 			}
 		});
 	}
@@ -168,19 +197,40 @@ public class MainView {
 	}
 	// this is triggered by the create Event button and changes to our tab panel screen
 	public void set_up_races_and_goto_postsetup() {
+		// we start by getting our heat races set, main set up will be added once that schema is hashed out
 		for(int ix = 0; ix < this.cm.get_num_groups(); ix++) {
 			AgeGroup c_ag = this.cm.get_age_group(ix);
 			c_ag.set_races();
 		}
 		// this initializes our new view, and passes our cupmanager into the view
 		PostSetupView new_view = new PostSetupView(this.cm);
-		this.frame.setVisible(false);
+		this.frame.dispose();
 	}
 	// used to call method on CupManager that saves its groups as a csv
 	public void save_config(ActionEvent e) {
 		this.cm.save_as_groups_csv();
 	}
-	public void load_saved_config(ActionEvent e) {
-		
+	public void load_saved_config() throws FileNotFoundException {
+		Scanner csv_scanner = new Scanner(new File("./race_group_config.csv"));
+		csv_scanner.nextLine();
+		csv_scanner.useDelimiter(",");
+		ArrayList<String> groupList = new ArrayList<String>();
+		while(csv_scanner.hasNext()) {
+			groupList.add(csv_scanner.next());
+		}
+		this.call_load_functions(groupList);
+	}
+	public void call_load_functions(ArrayList<String> import_groups) {
+		System.out.println(Integer.toString(import_groups.size()));
+		for(int x = 0; x < import_groups.size(); x++) {
+			System.out.println(import_groups.get(x).trim());
+			if((x+1)%3 == 0) {
+				this.add_age_group_to_manager(
+						import_groups.get(x-2),
+						Integer.parseInt(import_groups.get(x).trim()), 
+						Integer.parseInt(import_groups.get(x-1).trim())
+						);
+			}
+		}
 	}
 }

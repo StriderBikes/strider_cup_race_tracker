@@ -13,11 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import java.awt.event.*;
+
 
 public class PostSetupView {
 	CupManager cm;
 	private JFrame frame;
 	private JTabbedPane tab_pane;
+	private JButton btnAddGroups;
 	/**
 	 * Launch the application.
 	 */
@@ -57,6 +60,14 @@ public class PostSetupView {
 		
 		JPanel panel = new JPanel();
 		this.tab_pane.addTab("Settings", null, panel, null);
+		
+		btnAddGroups = new JButton("Add Groups");
+		panel.add(btnAddGroups);
+		btnAddGroups.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				back_to_group_config();
+			}
+		});
 	}
 	
 	private void setup_race_group_tabs() {
@@ -75,5 +86,10 @@ public class PostSetupView {
 			group_panel.add(new JScrollPane(racer_list));
 			this.tab_pane.addTab(current_group.get_title(), null, group_panel, null);
 		}
+	}
+	
+	public void back_to_group_config() {
+		System.out.println("going back to group config");
+		MainView mv = new MainView(this.cm);
 	}
 }
