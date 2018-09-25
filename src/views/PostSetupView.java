@@ -21,8 +21,10 @@ public class PostSetupView {
 	private JFrame frame;
 	private JTabbedPane tab_pane;
 	private JButton btnAddGroups;
-	private JButton edit_race;
-	private JButton edit_racer;
+	//private JButton edit_race;
+	//private JButton edit_racer;
+	//private JList racer_list;
+	//private JList race_list;
 	/**
 	 * Launch the application.
 	 */
@@ -47,6 +49,7 @@ public class PostSetupView {
 		initialize();
 		this.frame.setVisible(true);
 		this.setup_race_group_tabs();
+		//this.set_button_actions();
 	}
 
 	/**
@@ -78,8 +81,8 @@ public class PostSetupView {
 			JPanel group_panel = new JPanel();
 			JList racer_list = new JList(current_group.get_racer_ids());
 			JList race_list = new JList(current_group.get_heat_ids());
-			this.edit_race = new JButton("edit/view race");
-			this.edit_racer = new JButton("edit/view racer");
+			JButton edit_race = new JButton("edit/view race");
+			JButton edit_racer = new JButton("edit/view racer");
 			group_panel.add(new JLabel("race list:"));
 			group_panel.add(edit_race);
 			group_panel.add(new JScrollPane(race_list));

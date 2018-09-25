@@ -79,4 +79,16 @@ public class CupManager {
 			e.printStackTrace();
 		}
 	}
+	public ArrayList<Racer> get_racer_list(){
+		return this.racer_list;
+	}
+	public Racer get_racer_by_jersey(Integer jerseyNum) {
+		for(Racer nr: this.racer_list) {
+			if (nr.get_jersey_number() == jerseyNum) {
+				return nr;
+			}
+		} 
+		Racer new_r = new Racer(jerseyNum);
+		return new_r;
+	}
 }
