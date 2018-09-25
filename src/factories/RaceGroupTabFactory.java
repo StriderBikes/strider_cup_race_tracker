@@ -11,13 +11,11 @@ import java.awt.event.*;
 
 public class RaceGroupTabFactory {
 	JTabbedPane p;
-	CupManager cm;
-	public RaceGroupTabFactory(JTabbedPane parent, CupManager cm) {
-		this.cm = cm;
+	public RaceGroupTabFactory(JTabbedPane parent) {
 		this.p = parent;
 	}
 	
-	public JPanel new_jpanel(AgeGroup current_group) {
+	public void new_jpanel(AgeGroup current_group) {
 		JPanel group_panel = new JPanel();
 		JList racer_list = new JList(current_group.get_racer_ids());
 		JList race_list = new JList(current_group.get_heat_ids());
@@ -29,6 +27,6 @@ public class RaceGroupTabFactory {
 		group_panel.add(edit_racer);
 		group_panel.add(new JLabel("racer list"));
 		group_panel.add(new JScrollPane(racer_list));
-		return group_panel;
+		this.p.addTab(current_group.get_title(), null, group_panel, null);
 	}
 }

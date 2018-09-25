@@ -1,7 +1,7 @@
 package views;
 import models.*;
 import controllers.*;
-
+import factories.*;
 
 import java.awt.EventQueue;
 
@@ -73,8 +73,10 @@ public class PostSetupView {
 	}
 	
 	private void setup_race_group_tabs() {
+		RaceGroupTabFactory rgtf = new RaceGroupTabFactory(this.tab_pane);
 		for (int ix = 0; ix < this.cm.get_num_groups(); ix++) {
 			AgeGroup current_group = this.cm.get_age_group(ix);
+			
 		}
 	}
 	
