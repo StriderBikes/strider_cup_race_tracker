@@ -3,6 +3,7 @@ import factories.*;
 import views.*;
 import models.*;
 import java.util.ArrayList;
+import java.awt.event.*;
 
 public class RaceGroupController {
 	PostSetupView root_view;
@@ -21,7 +22,15 @@ public class RaceGroupController {
 		RaceGroupTabFactory rgtf = new RaceGroupTabFactory(this.root_view.get_tab_pane());
 		for (int ix = 0; ix < this.cm.get_num_groups(); ix++) {
 			AgeGroup current_group = this.cm.get_age_group(ix);
-			this.jPanels.add(rgtf.new_jpanel(current_group));
+			RaceGroupView rgv = rgtf.new_jpanel(current_group);
+			rgv.edit_racer.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					System.out.println("user trying to edit racer lol");
+					RacerController rc = new RacerController(cm.get_racer_by_jersey(Integer.parseInt(rgv.racer_list.getSelectedValue().toString())));
+				}
+			});
+			this.jPanels.add(rgv);
 		}
 	}
 	

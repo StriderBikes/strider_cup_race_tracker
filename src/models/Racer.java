@@ -6,7 +6,7 @@ public class Racer {
 	String gaurdName = "";
 	Integer racerID;
 	private Integer jerseyNumber;
-	Integer ageGroupId;
+	Integer ageGroupId =0;
 	private String heatID = "";
 	private Integer heatFinish = 0;
 	private String finalsID = "";
