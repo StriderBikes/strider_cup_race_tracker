@@ -157,25 +157,25 @@ public class RacerDialog extends JDialog {
 			this.racer.set_racer_name(this.textField.getText());
 		}
 		if(this.textField_1.getText() != "") {
-			
+			this.racer.set_jersey_number(Integer.parseInt(this.textField_1.getText()));
 		}
 		if(this.textField_2.getText() != "") {
-			
+			this.racer.set_gaurdian(this.textField_2.getText());
 		}
-		if(this.textField_3.getText() != "") {
-			
+		if(this.textField_3.getText() != "" && Integer.parseInt(this.textField_3.getText()) != this.racer.get_racer_group_id()) {
+			this.racer.set_age_group(Integer.parseInt(this.textField_3.getText()));
 		}
 		if(this.textField_4.getText() != "") {
-			
+			this.racer.set_heat_id(this.textField_4.getText());
 		}
 		if(this.textField_5.getText() != "") {
-			
-		}
-		if(this.textField_6.getText() != "") {
-			
+			this.racer.set_heat_finish(this.racer.get_heat_id(), Integer.parseInt(this.textField_5.getText()));
 		}
 		if(this.textField_7.getText() != "") {
-			
+			this.racer.set_finals_id(this.textField_7.getText());
+		}
+		if(this.textField_6.getText() != "") {
+			this.racer.set_finals_finish(Integer.parseInt(this.textField_6.getText()));
 		}
 	}
 }
