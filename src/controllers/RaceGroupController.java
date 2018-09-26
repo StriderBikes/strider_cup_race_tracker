@@ -3,12 +3,11 @@ import factories.*;
 import views.*;
 import models.*;
 import java.util.ArrayList;
-import javax.swing.JPanel;
 
 public class RaceGroupController {
 	PostSetupView root_view;
 	CupManager cm;
-	ArrayList<JPanel> jPanels = new ArrayList<JPanel>();
+	ArrayList<RaceGroupView> jPanels = new ArrayList<RaceGroupView>();
 	public RaceGroupController(CupManager cm) {
 		this.cm = cm;
 		this.setup_views();
@@ -22,7 +21,7 @@ public class RaceGroupController {
 		RaceGroupTabFactory rgtf = new RaceGroupTabFactory(this.root_view.get_tab_pane());
 		for (int ix = 0; ix < this.cm.get_num_groups(); ix++) {
 			AgeGroup current_group = this.cm.get_age_group(ix);
-			rgtf.new_jpanel(current_group);
+			this.jPanels.add(rgtf.new_jpanel(current_group));
 		}
 	}
 	
