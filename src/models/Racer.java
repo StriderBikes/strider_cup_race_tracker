@@ -2,9 +2,8 @@ package models;
 
 public class Racer {
 	String racer_name = "";
-	private Integer age;
+	private Integer age = -1;
 	String gaurdName = "";
-	Integer racerID;
 	private Integer jerseyNumber;
 	Integer ageGroupId =0;
 	private String heatID = "";
@@ -20,9 +19,6 @@ public class Racer {
 	};
 	public Racer(int jersey_num) {
 		this.set_jersey_number(jersey_num);
-	}
-	public Racer() {
-		return;
 	}
 	
 	// getters and setters
@@ -40,14 +36,15 @@ public class Racer {
 	public int get_jersey_number() {
 		return this.jerseyNumber;
 	}
-	
-	public void add_to_age_group(Integer gID) {
+	// Group id 
+	public void set_age_group(Integer gID) {
 		this.ageGroupId = gID;
 	};
-	
+
 	public Integer get_racer_group_id() {
 		return this.ageGroupId;
 	}
+
 	public void set_heat_finish(String unique_race, Integer place) {
 		this.heatFinish = place;
 	}

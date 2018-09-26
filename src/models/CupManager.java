@@ -43,11 +43,12 @@ public class CupManager {
 	// handles logic associated with adding a new race group
 	public void add_new_group(AgeGroup a) {
 		for(int i = 0; i < a.get_num_racers(); i++) {
+			Integer g_id = a.get_gid();
 			this.racer_id_last = this.racer_id_last + 1;
-			Racer newest = new Racer(this.racer_id_last);
+			Racer newest = new Racer(g_id, this.racer_id_last);
 			a.racer_ids.add(this.racer_id_last);
 			this.racer_list.add(newest);
-			newest.add_to_age_group(a.get_gid());
+			newest.set_age_group(a.get_gid());
 		}
 		this.age_groups.add(a);
 	}

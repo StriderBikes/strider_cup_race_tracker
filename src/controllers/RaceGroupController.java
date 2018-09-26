@@ -27,11 +27,16 @@ public class RaceGroupController {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					System.out.println("user trying to edit racer lol");
-					RacerController rc = new RacerController(cm.get_racer_by_jersey(Integer.parseInt(rgv.racer_list.getSelectedValue().toString())));
+					trigger_dialog(cm.get_racer_by_jersey(Integer.parseInt(rgv.racer_list.getSelectedValue().toString())));
 				}
 			});
 			this.jPanels.add(rgv);
 		}
+	}
+	
+	public void trigger_dialog(Racer r) {
+		System.out.println("trigger called");
+		RacerController rc = new RacerController(r);
 	}
 	
 }

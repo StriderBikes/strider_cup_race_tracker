@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
+import java.awt.event.*;
 public class RacerDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -29,6 +29,7 @@ public class RacerDialog extends JDialog {
 	 */
 	public static void main(String[] args, Racer con_racer) {
 		try {
+			System.out.println("creating the dialog box");
 			RacerDialog dialog = new RacerDialog(con_racer);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
@@ -61,7 +62,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblJersey, "cell 0 1,alignx trailing");
 		}
 		{
-			textField_1 = new JTextField(this.racer.get_jersey_number());
+			textField_1 = new JTextField(String.format("%d",this.racer.get_jersey_number()));
 			contentPanel.add(textField_1, "cell 1 1,growx");
 			textField_1.setColumns(10);
 		}
@@ -79,7 +80,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblGroupId, "cell 0 3,alignx trailing");
 		}
 		{
-			textField_3 = new JTextField(this.racer.get_racer_group_id());
+			textField_3 = new JTextField(String.format("%d",this.racer.get_racer_group_id()));
 			contentPanel.add(textField_3, "cell 1 3,growx");
 			textField_3.setColumns(10);
 		}
@@ -125,16 +126,56 @@ public class RacerDialog extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
+				okButton.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+					}
+				});
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						cancel_edit();
+					}
+				});
 				buttonPane.add(cancelButton);
 			}
 		}
+		this.setVisible(true);
 	}
 
+	public void cancel_edit() {
+		this.dispose();
+	}
+	
+	public void save_race() {
+		if(this.textField.getText() != "") {
+			this.racer.set_racer_name(this.textField.getText());
+		}
+		if(this.textField_1.getText() != "") {
+			
+		}
+		if(this.textField_2.getText() != "") {
+			
+		}
+		if(this.textField_3.getText() != "") {
+			
+		}
+		if(this.textField_4.getText() != "") {
+			
+		}
+		if(this.textField_5.getText() != "") {
+			
+		}
+		if(this.textField_6.getText() != "") {
+			
+		}
+		if(this.textField_7.getText() != "") {
+			
+		}
+	}
 }

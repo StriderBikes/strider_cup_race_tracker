@@ -10,6 +10,7 @@ public class RacerController {
 	public RacerController(Racer constructor_racer) {
 		this.racer = constructor_racer;
 		this.rd = new RacerDialog(this.racer);
+		System.out.println("constructed hit");
 	}
 	
 }
