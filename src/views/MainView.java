@@ -1,5 +1,5 @@
 package views;
-
+import controllers.*;
 import java.awt.EventQueue;
 import models.*;
 import javax.swing.JFrame;
@@ -211,7 +211,7 @@ public class MainView {
 			c_ag.set_races();
 		}
 		// this initializes our new view, and passes our cupmanager into the view
-		PostSetupView new_view = new PostSetupView(this.cm);
+		RaceGroupController rcg = new RaceGroupController(this.cm);
 		this.frame.dispose();
 	}
 	// used to call method on CupManager that saves its groups as a csv

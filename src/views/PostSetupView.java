@@ -4,7 +4,7 @@ import controllers.*;
 import factories.*;
 
 import java.awt.EventQueue;
-
+import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
@@ -45,7 +45,7 @@ public class PostSetupView {
 		this.cm = cm;
 		initialize();
 		this.frame.setVisible(true);
-		this.setup_race_group_tabs();
+		//this.setup_race_group_tabs();
 		//this.set_button_actions();
 	}
 
@@ -72,12 +72,9 @@ public class PostSetupView {
 		});
 	}
 	
-	private void setup_race_group_tabs() {
-		RaceGroupTabFactory rgtf = new RaceGroupTabFactory(this.tab_pane);
-		for (int ix = 0; ix < this.cm.get_num_groups(); ix++) {
-			AgeGroup current_group = this.cm.get_age_group(ix);
-			
-		}
+
+	public JTabbedPane get_tab_pane() {
+		return this.tab_pane;
 	}
 	
 	public void back_to_group_config() {
