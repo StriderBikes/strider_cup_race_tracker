@@ -7,9 +7,9 @@ public class Racer {
 	private Integer jerseyNumber;
 	Integer ageGroupId =0;
 	private String heatID = "";
-	private Integer heatFinish = 0;
+	private Integer heatFinish = -1;
 	private String finalsID = "";
-	private Integer finalsFinish = 0;
+	private Integer finalsFinish = -1;
 	String age_group_title = "";
 	
 	// constructors

@@ -98,7 +98,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblHeatFinish, "cell 0 5,alignx trailing");
 		}
 		{
-			textField_5 = new JTextField(this.racer.get_heat_finish());
+			textField_5 = new JTextField(String.format("%d", this.racer.get_heat_finish()));
 			contentPanel.add(textField_5, "cell 1 5,growx");
 			textField_5.setColumns(10);
 		}
@@ -116,7 +116,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblMainFinish, "cell 0 7,alignx trailing");
 		}
 		{
-			textField_6 = new JTextField(this.racer.get_finals_finish());
+			textField_6 = new JTextField(String.format("%d", this.racer.get_finals_finish()));
 			contentPanel.add(textField_6, "cell 1 7,growx");
 			textField_6.setColumns(10);
 		}
@@ -129,7 +129,7 @@ public class RacerDialog extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						
+						save_racer();
 					}
 				});
 				buttonPane.add(okButton);
@@ -152,7 +152,7 @@ public class RacerDialog extends JDialog {
 		this.dispose();
 	}
 	
-	public void save_race() {
+	public void save_racer() {
 		if(this.textField.getText() != "") {
 			this.racer.set_racer_name(this.textField.getText());
 		}
@@ -162,14 +162,17 @@ public class RacerDialog extends JDialog {
 		if(this.textField_2.getText() != "") {
 			this.racer.set_gaurdian(this.textField_2.getText());
 		}
+		/*
 		if(this.textField_3.getText() != "" && Integer.parseInt(this.textField_3.getText()) != this.racer.get_racer_group_id()) {
 			this.racer.set_age_group(Integer.parseInt(this.textField_3.getText()));
 		}
+		*/
 		if(this.textField_4.getText() != "") {
 			this.racer.set_heat_id(this.textField_4.getText());
 		}
 		if(this.textField_5.getText() != "") {
-			this.racer.set_heat_finish(this.racer.get_heat_id(), Integer.parseInt(this.textField_5.getText()));
+			System.out.println(this.textField_5.getText());
+			this.racer.set_heat_finish(Integer.parseInt(this.textField_5.getText()));
 		}
 		if(this.textField_7.getText() != "") {
 			this.racer.set_finals_id(this.textField_7.getText());
@@ -177,5 +180,6 @@ public class RacerDialog extends JDialog {
 		if(this.textField_6.getText() != "") {
 			this.racer.set_finals_finish(Integer.parseInt(this.textField_6.getText()));
 		}
+		this.dispose();
 	}
 }
