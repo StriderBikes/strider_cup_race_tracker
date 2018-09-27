@@ -61,9 +61,6 @@ public class AgeGroup {
 		} else {
 		if(leftovers > 0) {
 			num_races += 1;
-			if((leftovers + (num_races*2)) < g) {
-				num_races += 1;
-			} 
 		}
 		if (num_races > 20) {
 			g = g *2;
