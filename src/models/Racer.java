@@ -45,7 +45,7 @@ public class Racer {
 		return this.ageGroupId;
 	}
 
-	public void set_heat_finish(String unique_race, Integer place) {
+	public void set_heat_finish( Integer place) {
 		this.heatFinish = place;
 	}
 	public void set_heat_id(String id) {
