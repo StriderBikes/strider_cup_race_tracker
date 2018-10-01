@@ -19,10 +19,6 @@ public class RacerDialog extends JDialog {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
 
 	/**
 	 * Launch the application.
@@ -89,36 +85,32 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblHeatId, "cell 0 4,alignx trailing");
 		}
 		{
-			textField_4 = new JTextField(this.racer.get_heat_id());
-			contentPanel.add(textField_4, "cell 1 4,growx");
-			textField_4.setColumns(10);
+			JLabel lblNewLabel = new JLabel("");
+			contentPanel.add(lblNewLabel, "cell 1 4");
 		}
 		{
 			JLabel lblHeatFinish = new JLabel("Heat Finish");
 			contentPanel.add(lblHeatFinish, "cell 0 5,alignx trailing");
 		}
 		{
-			textField_5 = new JTextField(String.format("%d", this.racer.get_heat_finish()));
-			contentPanel.add(textField_5, "cell 1 5,growx");
-			textField_5.setColumns(10);
+			JLabel lblNewLabel_1 = new JLabel("");
+			contentPanel.add(lblNewLabel_1, "cell 1 5");
 		}
 		{
 			JLabel lblMainId = new JLabel("Main ID");
 			contentPanel.add(lblMainId, "cell 0 6,alignx trailing");
 		}
 		{
-			textField_7 = new JTextField(this.racer.get_finals_id());
-			contentPanel.add(textField_7, "cell 1 6,growx");
-			textField_7.setColumns(10);
+			JLabel label = new JLabel("");
+			contentPanel.add(label, "cell 1 6");
 		}
 		{
 			JLabel lblMainFinish = new JLabel("Main Finish");
 			contentPanel.add(lblMainFinish, "cell 0 7,alignx trailing");
 		}
 		{
-			textField_6 = new JTextField(String.format("%d", this.racer.get_finals_finish()));
-			contentPanel.add(textField_6, "cell 1 7,growx");
-			textField_6.setColumns(10);
+			JLabel label = new JLabel("");
+			contentPanel.add(label, "cell 1 7");
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -167,19 +159,6 @@ public class RacerDialog extends JDialog {
 			this.racer.set_age_group(Integer.parseInt(this.textField_3.getText()));
 		}
 		*/
-		if(this.textField_4.getText() != "") {
-			this.racer.set_heat_id(this.textField_4.getText());
-		}
-		if(this.textField_5.getText() != "") {
-			System.out.println(this.textField_5.getText());
-			this.racer.set_heat_finish(Integer.parseInt(this.textField_5.getText()));
-		}
-		if(this.textField_7.getText() != "") {
-			this.racer.set_finals_id(this.textField_7.getText());
-		}
-		if(this.textField_6.getText() != "") {
-			this.racer.set_finals_finish(Integer.parseInt(this.textField_6.getText()));
-		}
 		this.dispose();
 	}
 }

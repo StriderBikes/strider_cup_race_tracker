@@ -27,7 +27,7 @@ public class RaceGroupController {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					System.out.println("user trying to edit racer lol");
-					trigger_dialog(cm.get_racer_by_jersey(Integer.parseInt(rgv.racer_list.getSelectedValue().toString())));
+					trigger_dialog(current_group.get_racer_by_jersey(Integer.parseInt(rgv.racer_list.getSelectedValue().toString())));
 				}
 			});
 			rgv.edit_race.addActionListener(new ActionListener() {

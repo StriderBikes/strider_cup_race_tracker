@@ -75,15 +75,16 @@ public class AgeGroup {
 			this.heat_race_list.add(new_race);
 		}
 		System.out.println(String.format("created %d new heat races for race group: %s", num_races, this.group_title));
+		this.fill_heats_with_racers();
 	}
 	
 	// this will take the number of racers we have and systemitically 
 	// add them to heat races
 	private void fill_heats_with_racers() {
 		int ix = 0;
-		for(int x = 0; x < this.racers.size(); x ++) {
+		for(int x = 0; x < this.racers.size(); x++) {
 			this.heat_race_list.get(ix).add_racer(this.racers.get(x));
-			if (ix < this.heat_race_list.size()) {
+			if (ix < this.heat_race_list.size()-1) {
 				ix++;
 			} else {
 				ix = 0;
@@ -103,6 +104,15 @@ public class AgeGroup {
 		return this.racers;
 	}
 	
+	public Racer get_racer_by_jersey(Integer jerseyNum) {
+		for(Racer nr: this.racers) {
+			if (nr.get_jersey_number() == jerseyNum) {
+				return nr;
+			}
+		} 
+		Racer new_r = new Racer(jerseyNum);
+		return new_r;
+	}
 	
 	public int get_gid() {
 		return this.group_id;

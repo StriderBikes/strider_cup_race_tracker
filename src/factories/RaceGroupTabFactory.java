@@ -11,7 +11,7 @@ public class RaceGroupTabFactory {
 	}
 	
 	public RaceGroupView new_jpanel(AgeGroup current_group) {
-		RaceGroupView rgv = new RaceGroupView(current_group.get_heat_ids(), current_group.get_racer_ids());
+		RaceGroupView rgv = new RaceGroupView(current_group.get_heat_ids(), current_group.get_racer_ids_as_strings());
 		//rgv.racer_list = new JList();
 		//rgv.race_list = new JList();
 		rgv.build_panel();
