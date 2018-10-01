@@ -46,11 +46,12 @@ public class CupManager {
 			Integer g_id = a.get_gid();
 			this.racer_id_last = this.racer_id_last + 1;
 			Racer newest = new Racer(g_id, this.racer_id_last);
-			a.racer_ids.add(this.racer_id_last);
+			a.racers.add(newest);
 			this.racer_list.add(newest);
 			newest.set_age_group(a.get_gid());
 		}
 		this.age_groups.add(a);
+		this.racer_id_last = 101;
 	}
 	// this calls a method determines the amount of races that need to be done for the each age group
 	public void set_up_cup() {

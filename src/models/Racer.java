@@ -46,6 +46,10 @@ public class Racer {
 		this.finish_postions.put(race_id, fp);
 	}
 	
+	public Integer get_finish_position_by_race_id(String rId) {
+		return this.finish_postions.get(rId);
+	}
+	
 	public Map<String, Integer> get_finish_dict(){
 		return this.finish_postions;
 	}

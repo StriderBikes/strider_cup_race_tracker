@@ -11,7 +11,7 @@ public class AgeGroup {
 	 */
 	ArrayList<Race> heat_race_list = new ArrayList<Race>();
 	ArrayList<Race> main_race_list = new ArrayList<Race>();
-	ArrayList<Integer> racer_ids = new ArrayList<Integer>();
+	ArrayList<Racer> racers = new ArrayList<Racer>();
 	ArrayList<Integer> race_cutoffs = new ArrayList<Integer>();
 	
 	String group_title;
@@ -77,10 +77,12 @@ public class AgeGroup {
 		System.out.println(String.format("created %d new heat races for race group: %s", num_races, this.group_title));
 	}
 	
-	private void fill_mains_with_racers() {
+	// this will take the number of racers we have and systemitically 
+	// add them to heat races
+	private void fill_heats_with_racers() {
 		int ix = 0;
-		for(int x = 0; x < this.racer_ids.size(); x ++) {
-			this.heat_race_list.get(ix).add_racer(this.racer_ids.get(x));
+		for(int x = 0; x < this.racers.size(); x ++) {
+			this.heat_race_list.get(ix).add_racer(this.racers.get(x));
 			if (ix < this.heat_race_list.size()) {
 				ix++;
 			} else {
@@ -88,14 +90,19 @@ public class AgeGroup {
 			}
 		}
 	}
-	
-	public String[] get_racer_ids() {
-		String[] out = new String[this.racer_ids.size()];
-		for(int x = 0; x < this.racer_ids.size(); x++) {
-			out[x] = Integer.toString(this.racer_ids.get(x));
+	// needed to display list of racer ids on main Race Group Page
+	public String[] get_racer_ids_as_strings() {
+		String[] out = new String[this.racers.size()];
+		for(int x = 0; x < this.racers.size(); x++) {
+			out[x] = Integer.toString(this.racers.get(x).get_jersey_number());
 		}
 		return out;
 	}
+	
+	public ArrayList<Racer> get_full_racer_list(){
+		return this.racers;
+	}
+	
 	
 	public int get_gid() {
 		return this.group_id;
