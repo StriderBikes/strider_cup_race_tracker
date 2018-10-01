@@ -30,6 +30,12 @@ public class RaceGroupController {
 					trigger_dialog(cm.get_racer_by_jersey(Integer.parseInt(rgv.racer_list.getSelectedValue().toString())));
 				}
 			});
+			rgv.edit_race.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					System.out.println("user clicked edit race");
+				}
+			});
 			this.jPanels.add(rgv);
 		}
 	}

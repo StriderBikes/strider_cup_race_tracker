@@ -1,15 +1,12 @@
 package models;
-
+import java.util.*;
 public class Racer {
 	String racer_name = "";
 	private Integer age = -1;
 	String gaurdName = "";
 	private Integer jerseyNumber;
 	Integer ageGroupId =0;
-	private String heatID = "";
-	private Integer heatFinish = -1;
-	private String finalsID = "";
-	private Integer finalsFinish = -1;
+	private Map<String, Integer> finish_postions = new HashMap<String,Integer>();
 	String age_group_title = "";
 	
 	// constructors
@@ -44,30 +41,13 @@ public class Racer {
 	public Integer get_racer_group_id() {
 		return this.ageGroupId;
 	}
-
-	public void set_heat_finish( Integer place) {
-		this.heatFinish = place;
+	
+	public void set_finsish_postion(String race_id, Integer fp) {
+		this.finish_postions.put(race_id, fp);
 	}
-	public void set_heat_id(String id) {
-		this.heatID = id;
-	}
-	public String get_heat_id() {
-		return this.heatID;
-	}
-	public int get_heat_finish() {
-		return this.heatFinish;
-	}
-	public void set_finals_id(String id) {
-		this.finalsID = id;
-	}
-	public String get_finals_id() {
-		return this.finalsID;
-	}
-	public void set_finals_finish(Integer place) {
-		this.finalsFinish = place;
-	}
-	public Integer get_finals_finish() {
-		return this.finalsFinish;
+	
+	public Map<String, Integer> get_finish_dict(){
+		return this.finish_postions;
 	}
 	public String get_racer_name() {
 		return this.racer_name;

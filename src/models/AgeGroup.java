@@ -78,7 +78,15 @@ public class AgeGroup {
 	}
 	
 	private void fill_mains_with_racers() {
-		
+		int ix = 0;
+		for(int x = 0; x < this.racer_ids.size(); x ++) {
+			this.heat_race_list.get(ix).add_racer(this.racer_ids.get(x));
+			if (ix < this.heat_race_list.size()) {
+				ix++;
+			} else {
+				ix = 0;
+			}
+		}
 	}
 	
 	public String[] get_racer_ids() {
