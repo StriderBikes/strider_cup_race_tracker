@@ -34,6 +34,9 @@ public class Race {
 	public String get_race_id() {
 		return this.unique_race_id;
 	}
+	public ArrayList<Racer> get_racer_list(){
+		return this.racerList;
+	}
 	public void update_finish_map(Integer finish_position, Racer racer_object) {
 		this.finishPositions.put(finish_position, racer_object.get_jersey_number());
 		racer_object.set_finsish_postion(this.get_race_id(), finish_position);

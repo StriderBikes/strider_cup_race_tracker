@@ -90,6 +90,10 @@ public class AgeGroup {
 				ix = 0;
 			}
 		}
+		for(int s = 0; s < this.heat_race_list.size(); s++) {
+			Race current = this.heat_race_list.get(s);
+			System.out.println(String.format("race %s created with %d racers",current.get_race_id(), current.get_racer_list().size()));
+		}
 	}
 	// needed to display list of racer ids on main Race Group Page
 	public String[] get_racer_ids_as_strings() {
