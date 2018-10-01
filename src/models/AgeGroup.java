@@ -9,7 +9,6 @@ public class AgeGroup {
 	 * to derive number of participants in this age 
 	 * group
 	 */
-	//empty races list, will be packed with method FillRaces()
 	ArrayList<Race> heat_race_list = new ArrayList<Race>();
 	ArrayList<Race> main_race_list = new ArrayList<Race>();
 	ArrayList<Integer> racer_ids = new ArrayList<Integer>();
@@ -76,6 +75,10 @@ public class AgeGroup {
 			this.heat_race_list.add(new_race);
 		}
 		System.out.println(String.format("created %d new heat races for race group: %s", num_races, this.group_title));
+	}
+	
+	private void fill_mains_with_racers() {
+		
 	}
 	
 	public String[] get_racer_ids() {

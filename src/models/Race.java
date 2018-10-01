@@ -1,11 +1,14 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Race {
 	private static int avg_race_time = 5;
 	protected Boolean timeOptimized = false;
 	protected Integer ageGroupId;
+	private Map<Integer,Integer> finishPositions = new HashMap<Integer, Integer>();
 	private ArrayList<Integer> racerList = new ArrayList<Integer>();
 	private String unique_race_id;
 	//constructor
