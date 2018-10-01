@@ -30,7 +30,7 @@ public class Racer {
 	}
 	
 	public void set_jersey_number(int num) {
-		this.jerseyNumber = num + 101;
+		this.jerseyNumber = num;
 	}
 	
 	public int get_jersey_number() {
