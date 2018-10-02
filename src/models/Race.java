@@ -8,6 +8,7 @@ public class Race {
 	private static int avg_race_time = 5;
 	protected Boolean timeOptimized = false;
 	protected Integer ageGroupId;
+	private boolean is_complete = false;
 	private Map<Integer,Integer> finishPositions = new HashMap<Integer, Integer>();
 	private ArrayList<Racer> racerList = new ArrayList<Racer>();
 	private String unique_race_id;
@@ -24,6 +25,9 @@ public class Race {
 		return;
 	}
 	
+	public void complete_race() {
+		this.is_complete = true;
+	}
 	public Racer get_racer_at_index(int ix) {
 		return this.racerList.get(ix);
 	}

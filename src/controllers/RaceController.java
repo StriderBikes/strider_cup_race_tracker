@@ -8,6 +8,7 @@ public class RaceController {
 	Map<String, Integer> new_values = new HashMap<String,Integer>();
 	public RaceController(Race race_edit) {
 		this.my_race = race_edit;
+		this.init_dialog();
 	}
 	public void add_new_value(String key, Integer value) {
 		this.new_values.put(key, value);

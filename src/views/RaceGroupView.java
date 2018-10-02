@@ -6,7 +6,7 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.*;
-
+import java.util.*;
 
 /**
  * this is a template layout for our RaceGroupTabFactory to build the 
@@ -30,7 +30,6 @@ public class RaceGroupView {
 	public JList racer_list;
 	public JScrollPane racer_pane;
 	public JScrollPane race_pane;
-	
 	public JPanel panel;
 	
 	private void add_racer_scroll_pane() {

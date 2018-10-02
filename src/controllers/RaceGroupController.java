@@ -34,6 +34,7 @@ public class RaceGroupController {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					System.out.println("user clicked edit race");
+					edit_race_dialog_init(current_group.get_race_by_id(rgv.race_list.getSelectedValue().toString(), false));
 				}
 			});
 			this.jPanels.add(rgv);
