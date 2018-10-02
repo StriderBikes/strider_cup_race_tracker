@@ -132,6 +132,7 @@ public class AgeGroup {
 				}
 			}
 		}
+		return new Race(this.group_id, race_id);
 	}
 	
 	public int get_gid() {
