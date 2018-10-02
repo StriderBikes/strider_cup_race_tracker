@@ -50,7 +50,7 @@ public class AgeGroup {
 		int g = this.num_gates;
 		int num_races = this.num_racers / g;
 		int leftovers = this.num_racers % g;
-		if(num_races < this.num_gates) {
+		if(num_races < this.num_gates/2) {
 			g = this.num_gates/2;
 			if(this.num_racers % g == 0) {
 				num_races = this.num_racers / g;
