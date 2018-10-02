@@ -118,6 +118,22 @@ public class AgeGroup {
 		return new_r;
 	}
 	
+	public Race get_race_by_id(String race_id, boolean is_main) {
+		if(!is_main) {
+			for (Race r: this.heat_race_list) {
+				if(r.get_race_id() == race_id) {
+					return r;
+				}
+			}
+		} else {
+			for (Race mR: this.main_race_list) {
+				if(mR.get_race_id() == race_id) {
+					return mR;
+				}
+			}
+		}
+	}
+	
 	public int get_gid() {
 		return this.group_id;
 	}

@@ -1,4 +1,5 @@
 package views;
+import models.*;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -19,9 +20,9 @@ public class RaceDialog extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args, Race d_race) {
 		try {
-			RaceDialog dialog = new RaceDialog();
+			RaceDialog dialog = new RaceDialog(d_race);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -32,7 +33,7 @@ public class RaceDialog extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public RaceDialog() {
+	public RaceDialog(Race d_race) {
 		setBounds(100, 100, 642, 594);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

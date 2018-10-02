@@ -40,6 +40,11 @@ public class RaceGroupController {
 		}
 	}
 	
+	public void edit_race_dialog_init(Race edit_race) {
+		System.out.println("editing race : " + edit_race.get_race_id());
+		RaceController new_rc = new RaceController(edit_race);
+	}
+	
 	public void trigger_dialog(Racer r) {
 		System.out.println("trigger called");
 		RacerController rc = new RacerController(r);
