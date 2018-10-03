@@ -96,7 +96,7 @@ public class RaceDialog extends JDialog {
 		}
 		{
 			JList racer_list = new JList(this.di_race.get_jersey_nums());
-			getContentPane().add(racer_list, "cell 3 2 2");
+			getContentPane().add(racer_list, "cell 1 2");
 		}
 	}
 	
