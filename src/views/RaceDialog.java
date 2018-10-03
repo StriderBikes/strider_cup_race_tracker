@@ -92,7 +92,8 @@ public class RaceDialog extends JDialog {
 			}
 			{
 				jersey = String.format("%d", this.di_race.get_finish_map().get(idx));
-				if(jersey != "null"){
+				if(jersey == "null"){
+					System.out.println(jersey);
 					textField = new JTextField(jersey);
 					getContentPane().add(textField, "cell 0 2");
 					this.position_inputs.add(textField);

@@ -46,6 +46,19 @@ public class AgeGroup {
 	public String get_title() {
 		return this.group_title;
 	}
+	
+	public ArrayList<Race> get_main_list(){
+		return this.main_race_list;
+	}
+	
+	public String[] get_main_ids() {
+		String[] id_strings = new String[this.main_race_list.size()];
+		for(int ix = 0; ix < this.main_race_list.size(); ix++) {
+			id_strings[ix] = this.main_race_list.get(ix).get_race_id();
+		}
+		return id_strings;
+	}
+	
 	public void set_races() {
 		int g = this.num_gates;
 		int num_races = this.num_racers / g;
