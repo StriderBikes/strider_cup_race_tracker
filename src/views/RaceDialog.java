@@ -81,6 +81,7 @@ public class RaceDialog extends JDialog {
 			JLabel lblPleaseEnterThe = new JLabel("Please enter the Jersey Number into the Corresponding Finish Postion text box");
 			getContentPane().add(lblPleaseEnterThe, "cell 0 1");
 		}
+
 		for(int idx = 0; idx < this.di_race.get_racer_list().size(); idx++){
 			{
 				JLabel lblst = new JLabel(String.format("%d : ", idx+1));
@@ -95,8 +96,12 @@ public class RaceDialog extends JDialog {
 			}	
 		}
 		{
+			JLabel lblPleaseEnterThe = new JLabel("Racer Jersey Number List");
+			getContentPane().add(lblPleaseEnterThe, "cell 0 3");
+		}
+		{
 			JList racer_list = new JList(this.di_race.get_jersey_nums());
-			getContentPane().add(racer_list, "cell 1 2");
+			getContentPane().add(racer_list, "cell 0 4");
 		}
 	}
 	
