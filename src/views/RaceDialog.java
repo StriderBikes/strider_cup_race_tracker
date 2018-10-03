@@ -59,7 +59,8 @@ public class RaceDialog extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						
+						save_result();
+						dispose();
 					}
 				});
 				buttonPane.add(okButton);
@@ -83,16 +84,26 @@ public class RaceDialog extends JDialog {
 		}
 
 		for(int idx = 0; idx < this.di_race.get_racer_list().size(); idx++){
+			String jersey = "";
 			{
 				JLabel lblst = new JLabel(String.format("%d : ", idx+1));
 				this.position_labels.add(lblst);
 				getContentPane().add(lblst, "flowx,cell 0 2");
 			}
 			{
-				textField = new JTextField();
-				getContentPane().add(textField, "cell 0 2");
-				this.position_inputs.add(textField);
-				textField.setColumns(10);
+				jersey = String.format("%d", this.di_race.get_finish_map().get(idx));
+				if(jersey != "null"){
+					textField = new JTextField(jersey);
+					getContentPane().add(textField, "cell 0 2");
+					this.position_inputs.add(textField);
+					textField.setColumns(10);
+				} else {
+					System.out.println("no result saved");
+					textField = new JTextField();
+					getContentPane().add(textField, "cell 0 2");
+					this.position_inputs.add(textField);
+					textField.setColumns(10);
+				}
 			}	
 		}
 		{
@@ -111,11 +122,14 @@ public class RaceDialog extends JDialog {
 	
 	public void save_result() {
 		for(int ix=0; ix < this.position_inputs.size(); ix++) {
-			if(this.position_inputs.get(ix).toString() != "") {
-				Integer jNum = Integer.parseInt(this.position_inputs.get(ix).toString());
+			try {
+				Integer jNum = Integer.parseInt(this.position_inputs.get(ix).getText());
 				Racer u_racer = this.di_race.get_racer_by_id(jNum);
-				Integer position = Integer.parseInt(this.position_labels.get(ix).toString());
+				Integer position = ix;
 				this.di_race.update_finish_map(position, u_racer);
+			} catch (java.lang.NumberFormatException er)
+			{
+				System.out.println(er.toString());
 			}
 		}
 		System.out.println(this.di_race.get_finish_map().toString());
