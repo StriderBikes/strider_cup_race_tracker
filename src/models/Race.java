@@ -28,10 +28,14 @@ public class Race {
 	public void complete_race() {
 		this.is_complete = true;
 	}
-	public Racer get_racer_at_index(int ix) {
-		return this.racerList.get(ix);
+	public Racer get_racer_by_id(Integer jNum) {
+		for(int ix = 0; ix < this.racerList.size(); ix++) {
+			if(this.racerList.get(ix).get_jersey_number() == jNum) {
+				return this.racerList.get(ix);
+			}
+		}
+		return new Racer(jNum);
 	}
-	
 	public Boolean is_time_optimized() {
 		return this.timeOptimized;
 	}
@@ -41,8 +45,18 @@ public class Race {
 	public ArrayList<Racer> get_racer_list(){
 		return this.racerList;
 	}
+	public String[] get_jersey_nums() {
+		String[] j_nums = new String[this.racerList.size()];
+		for(int ix = 0; ix < this.racerList.size(); ix++) {
+			j_nums[ix] = Integer.toString(this.racerList.get(ix).get_jersey_number());
+		}
+		return j_nums;
+	}
 	public void update_finish_map(Integer finish_position, Racer racer_object) {
 		this.finishPositions.put(finish_position, racer_object.get_jersey_number());
 		racer_object.set_finsish_postion(this.get_race_id(), finish_position);
+	}
+	public Map get_finish_map() {
+		return this.finishPositions;
 	}
 }

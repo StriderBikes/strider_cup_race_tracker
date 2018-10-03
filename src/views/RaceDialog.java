@@ -3,6 +3,7 @@ import models.*;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -15,11 +16,14 @@ import javax.swing.JList;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
+import java.awt.event.*;
+
 
 public class RaceDialog extends JDialog {
 	Race di_race;
 	public ArrayList<JLabel> position_labels = new ArrayList<JLabel>();
 	public ArrayList<JTextField> position_inputs = new ArrayList<JTextField>();
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -44,27 +48,72 @@ public class RaceDialog extends JDialog {
 	 */
 	public void CreateRaceDialog() {
 		setBounds(100, 100, 642, 594);
-		getContentPane().setLayout(new BorderLayout());
+		getContentPane().setLayout(new MigLayout("", "[620px]", "[39px][][]"));
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			getContentPane().add(buttonPane, "cell 0 0,growx,aligny top");
 			{
 				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
+				//okButton.setActionCommand("OK");
+				okButton.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+					}
+				});
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.setActionCommand("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						cancel_edit();
+					}
+				});
 				buttonPane.add(cancelButton);
 			}
 		}
 		{
-			JScrollPane scrollPane = new JScrollPane();
-			getContentPane().add(scrollPane, BorderLayout.CENTER);
+			JLabel lblPleaseEnterThe = new JLabel("Please enter the Jersey Number into the Corresponding Finish Postion text box");
+			getContentPane().add(lblPleaseEnterThe, "cell 0 1");
 		}
+		for(int idx = 0; idx < this.di_race.get_racer_list().size(); idx++){
+			{
+				JLabel lblst = new JLabel(String.format("%d : ", idx+1));
+				this.position_labels.add(lblst);
+				getContentPane().add(lblst, "flowx,cell 0 2");
+			}
+			{
+				textField = new JTextField();
+				getContentPane().add(textField, "cell 0 2");
+				this.position_inputs.add(textField);
+				textField.setColumns(10);
+			}	
+		}
+		{
+			JList racer_list = new JList(this.di_race.get_jersey_nums());
+			getContentPane().add(racer_list, "cell 3 2 2");
+		}
+	}
+	
+	public void cancel_edit() {
+		this.dispose();
+	}
+	
+	public void save_result() {
+		for(int ix=0; ix < this.position_inputs.size(); ix++) {
+			if(this.position_inputs.get(ix).toString() != "") {
+				Integer jNum = Integer.parseInt(this.position_inputs.get(ix).toString());
+				Racer u_racer = this.di_race.get_racer_by_id(jNum);
+				Integer position = Integer.parseInt(this.position_labels.get(ix).toString());
+				this.di_race.update_finish_map(position, u_racer);
+			}
+		}
+		System.out.println(this.di_race.get_finish_map().toString());
 	}
 
 }
