@@ -9,6 +9,7 @@ public class Race {
 	protected Boolean timeOptimized = false;
 	protected Integer ageGroupId;
 	private boolean is_complete = false;
+	private int num_racers = 0;
 	private Map<Integer,Integer> finishPositions = new HashMap<Integer, Integer>();
 	private ArrayList<Racer> racerList = new ArrayList<Racer>();
 	private String unique_race_id;
@@ -18,6 +19,17 @@ public class Race {
 		this.unique_race_id = r_id;
 	}
 	
+	public Race(Integer ageGroup, String id, Integer num_racers) {
+		this.num_racers = num_racers;
+		this.unique_race_id = id;
+	}
+	
+	public void set_num_racers(Integer nr) {
+		this.num_racers = nr;
+	}
+	public Integer get_num_racers() {
+		return this.num_racers;
+	}
 	//getter & setters
 	
 	public void add_racer(Racer new_racer) {
@@ -45,6 +57,8 @@ public class Race {
 	public ArrayList<Racer> get_racer_list(){
 		return this.racerList;
 	}
+	
+	
 	public String[] get_jersey_nums() {
 		String[] j_nums = new String[this.racerList.size()];
 		for(int ix = 0; ix < this.racerList.size(); ix++) {
