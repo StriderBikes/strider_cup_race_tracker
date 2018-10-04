@@ -83,7 +83,13 @@ public class AgeGroup {
 			} else {
 				num_races = (this.num_racers / g) + 1;
 			}
-		} else {
+		} else if (num_races > 10) {
+			g = this.num_gates * 2;
+			num_races = this.num_racers / g;
+			if(this.num_racers % g != 0) {
+				num_races++; 
+			} 
+		}else {
 		if(leftovers > 0) {
 			num_races += 1;
 		}

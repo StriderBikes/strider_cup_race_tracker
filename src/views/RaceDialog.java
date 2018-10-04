@@ -47,8 +47,8 @@ public class RaceDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public void CreateRaceDialog() {
-		setBounds(100, 100, 642, 594);
-		getContentPane().setLayout(new MigLayout("", "[620px]", "[39px][][]"));
+		setBounds(100, 100, 1067, 530);
+		getContentPane().setLayout(new MigLayout("", "[900px]", "[39px][][][][]"));
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -91,19 +91,20 @@ public class RaceDialog extends JDialog {
 				getContentPane().add(lblst, "flowx,cell 0 2");
 			}
 			{
-				jersey = String.format("%d", this.di_race.get_finish_map().get(idx));
-				if(jersey == "null"){
+				//jersey = String.format("%d", this.di_race.get_finish_map().get(idx));
+				if(this.di_race.get_finish_map().get(idx) != null) {
+					jersey = String.format("%d", this.di_race.get_finish_map().get(idx));
 					System.out.println(jersey);
 					textField = new JTextField(jersey);
+					textField.setColumns(50);
 					getContentPane().add(textField, "cell 0 2");
 					this.position_inputs.add(textField);
-					textField.setColumns(10);
 				} else {
 					System.out.println("no result saved");
 					textField = new JTextField();
+					textField.setColumns(50);
 					getContentPane().add(textField, "cell 0 2");
 					this.position_inputs.add(textField);
-					textField.setColumns(10);
 				}
 			}	
 		}
