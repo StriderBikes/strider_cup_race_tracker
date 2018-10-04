@@ -5,6 +5,14 @@ import models.*;
 import java.util.ArrayList;
 import java.awt.event.*;
 
+/**
+ * this is the main controller for the race group view
+ * it handles to calling of our tab panel factory and storing those objects
+ * as well as the methods to be called by our button action listeners
+ * @author nick.williams
+ *
+ */
+
 public class RaceGroupController {
 	//PROPERTIES
 	RaceByGroupView rbgv;
