@@ -86,7 +86,7 @@ public class RaceByGroupView {
 			this.row_values[ix] = row_race.get_race_table_vals();
 		}
 		JTable table = new JTable(this.row_values, this.col_names);
-		this.frame.add(table);
+		this.frame.add(table, "cell 1 2");
 	}
 
 }
