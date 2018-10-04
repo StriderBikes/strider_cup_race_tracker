@@ -69,13 +69,14 @@ public class AgeGroup {
 		}
 		Integer current = this.main_race_list.get(this.main_race_list.size()-1).get_num_racers();
 		this.main_race_list.get(this.main_race_list.size()-1).set_num_racers(current+sub_remain);
+		System.out.println("created mains: " + this.main_race_list.toString());
 	}
 	
 	public void set_races() {
 		int g = this.num_gates;
 		int num_races = this.num_racers / g;
 		int leftovers = this.num_racers % g;
-		if(num_races < this.num_gates/2) {
+		if(num_races < this.num_gates/4) {
 			g = this.num_gates/2;
 			if(this.num_racers % g == 0) {
 				num_races = this.num_racers / g;
@@ -118,8 +119,8 @@ public class AgeGroup {
 		for(int s = 0; s < this.heat_race_list.size(); s++) {
 			Race current = this.heat_race_list.get(s);
 			System.out.println(String.format("race %s created with %d racers",current.get_race_id(), current.get_racer_list().size()));
-			
 		}
+		this.set_main_cutoffs();
 	}
 	// needed to display list of racer ids on main Race Group Page
 	public String[] get_racer_ids_as_strings() {
