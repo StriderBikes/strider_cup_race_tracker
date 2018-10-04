@@ -154,11 +154,20 @@ public class AgeGroup {
 		}
 		return out;
 	}
-	
+	/**
+	 * get list of all racers in this age group
+	 * @return
+	 */
 	public ArrayList<Racer> get_full_racer_list(){
 		return this.racers;
 	}
 	
+	/**
+	 * given the jersey number of a racer in this age group
+	 * this method returns the racer object
+	 * @param jerseyNum
+	 * @return
+	 */
 	public Racer get_racer_by_jersey(Integer jerseyNum) {
 		for(Racer nr: this.racers) {
 			if (nr.get_jersey_number() == jerseyNum) {
@@ -169,6 +178,16 @@ public class AgeGroup {
 		return new_r;
 	}
 	
+	
+	/**
+	 * given the race id string, and a boolean as
+	 * to whether it is a main race or a heat race
+	 * this method returns the race object with the 
+	 * specified race_id 
+	 * @param race_id
+	 * @param is_main
+	 * @return
+	 */
 	public Race get_race_by_id(String race_id, boolean is_main) {
 		if(!is_main) {
 			for (Race r: this.heat_race_list) {
@@ -187,13 +206,15 @@ public class AgeGroup {
 	}
 	
 	
-	
+	// get this groups id
 	public int get_gid() {
 		return this.group_id;
 	}
+	// get the number of total racers in this group
 	public int get_num_racers() {
 		return this.num_racers;
 	}
+	// get the number of gates for this group
 	public int get_num_gates() {
 		return this.num_gates;
 	}
