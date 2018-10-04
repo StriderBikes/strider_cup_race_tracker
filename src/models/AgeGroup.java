@@ -9,11 +9,12 @@ public class AgeGroup {
 	 * to derive number of participants in this age 
 	 * group
 	 */
+	//list properties
 	ArrayList<Race> heat_race_list = new ArrayList<Race>();
 	ArrayList<Race> main_race_list = new ArrayList<Race>();
 	ArrayList<Racer> racers = new ArrayList<Racer>();
 	ArrayList<Integer> race_cutoffs = new ArrayList<Integer>();
-	
+	// non-list properties
 	String group_title;
 	private Integer num_gates;
 	private Integer group_id;
@@ -21,6 +22,9 @@ public class AgeGroup {
 	private Integer heat_cutoff = 1;
 	
 	
+	/**
+	 * methods
+	 */
 	//constructor
 	public AgeGroup(String gt, int gID, int gates, int num_racers) {
 		this.group_id = gID;
@@ -31,10 +35,12 @@ public class AgeGroup {
 	
 	//getters and setters
 	
+	// get heat race list
 	public ArrayList<Race> get_heats() {
 		return this.heat_race_list;
 	}
 	
+	//get the ids for each heat as an array of strings
 	public String[] get_heat_ids() {
 		String[] id_strings = new String[this.heat_race_list.size()];
 		for(int x = 0; x < this.heat_race_list.size(); x++) {
@@ -42,15 +48,15 @@ public class AgeGroup {
 		}
 		return id_strings;
 	}
-	
+	//get the title of this group
 	public String get_title() {
 		return this.group_title;
 	}
-	
+	//get the list of main races
 	public ArrayList<Race> get_main_list(){
 		return this.main_race_list;
 	}
-	
+	//get the ids for the main races as an array of strings
 	public String[] get_main_ids() {
 		String[] id_strings = new String[this.main_race_list.size()];
 		for(int ix = 0; ix < this.main_race_list.size(); ix++) {
@@ -58,7 +64,14 @@ public class AgeGroup {
 		}
 		return id_strings;
 	}
-	
+	/**
+	 * set race sizes for our mains
+	 * should be noted that all races n except n-1
+	 * will be set to +1 the number of racers 
+	 * it is initially filled with to accomodate the
+	 * first place winner from the prior main to be 
+	 * included
+	 */
 	public void set_main_cutoffs() {
 		this.main_race_list.add(new Race(this.group_id, "main_1"));
 		Integer less_mains = this.heat_race_list.size() / (this.heat_race_list.size()/3);
@@ -71,7 +84,12 @@ public class AgeGroup {
 		this.main_race_list.get(this.main_race_list.size()-1).set_num_racers(current+sub_remain);
 		System.out.println("created mains: " + this.main_race_list.toString());
 	}
-	
+	/**
+	 * this is our logic for breaking down number of racers
+	 * into a number of heats for any given race gate size,
+	 * makes a call to fill these newly created races in an unopinionated way
+	 * at the end of the function
+	 */
 	public void set_races() {
 		int g = this.num_gates;
 		int num_races = this.num_racers / g;

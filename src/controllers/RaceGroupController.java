@@ -22,11 +22,16 @@ public class RaceGroupController {
 	
 	//METHODS
 	
+	
+	//constructor
 	public RaceGroupController(CupManager cm) {
 		this.cm = cm;
 		this.setup_views();
 	}
 	
+	//initializes our view and calls the
+	//method that uses our factory to create and 
+	//add tab panels
 	private void setup_views() {
 		this.root_view = new PostSetupView(this.cm);
 		this.setup_race_group_tabs();
@@ -59,17 +64,17 @@ public class RaceGroupController {
 			this.jPanels.add(rgv);
 		}
 	}
-	
+	//instantiates race controller
 	public void edit_race_dialog_init(Race edit_race) {
 		System.out.println("editing race : " + edit_race.get_race_id());
 		RaceController new_rc = new RaceController(edit_race);
 	}
-	
+	//instantiates racer controller
 	public void trigger_dialog(Racer r) {
 		System.out.println("trigger called");
 		RacerController rc = new RacerController(r);
 	}
-	
+	//instantiates full view controller
 	public void goto_full_race_view(AgeGroup ag) {
 		System.out.println("nice try big boi");
 		this.rbgv = new RaceByGroupView(ag);
