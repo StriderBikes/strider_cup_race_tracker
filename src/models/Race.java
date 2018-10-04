@@ -91,4 +91,15 @@ public class Race {
 	public Map get_finish_map() {
 		return this.finishPositions;
 	}
+	
+	public Object[] get_race_table_vals() {
+		Object[] race_vals = new Object[this.num_racers+1];
+		race_vals[0] = this.get_race_id();
+		int valx = 0;
+		for(Racer tr: this.racerList) {
+			valx++;
+			race_vals[valx] = String.format("%d", tr.get_jersey_number());
+		}
+		return race_vals;
+	}
 }

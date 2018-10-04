@@ -75,13 +75,18 @@ public class RaceByGroupView {
 		}
 		*/
 		this.col_names = new Object[this.raceGroup.get_heats().get(0).get_num_racers() + 1];
+		this.row_values = new Object[this.raceGroup.get_heats().size()][this.raceGroup.get_heats().get(0).get_num_racers() + 1];
 		this.col_names[0] = "Race Name/ID";
 		for(int x = 0; x < this.raceGroup.get_heats().get(0).get_num_racers() - 1; x++) {
 			this.col_names[x+1] = String.format("%d pos", x+1);
 		}
 		for(int ix = 0; ix < this.raceGroup.get_heats().size(); ix++) {
-			
+			Race row_race = this.raceGroup.get_heats().get(ix);
+			//this.row_values[ix][0] = row_race.get_race_id();
+			this.row_values[ix] = row_race.get_race_table_vals();
 		}
+		JTable table = new JTable(this.row_values, this.col_names);
+		this.frame.add(table);
 	}
 
 }
