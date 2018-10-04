@@ -51,6 +51,7 @@ public class Race {
 	
 	public void add_racer(Racer new_racer) {
 		this.racerList.add(new_racer);
+		this.num_racers++;
 		return;
 	}
 	

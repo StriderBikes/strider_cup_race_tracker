@@ -13,21 +13,6 @@ public class RaceByGroupView {
 	private JFrame frame;
 	private JTable table;
 	public AgeGroup raceGroup;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RaceByGroupView window = new RaceByGroupView();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * overloading the only constructor method that
@@ -37,7 +22,9 @@ public class RaceByGroupView {
 	 * Create the application.
 	 */
 	public RaceByGroupView(AgeGroup ag) {
-		initialize();
+		this.raceGroup = ag;
+		initialize_with_ag();
+		this.frame.setVisible(true);
 	}
 	//not overloaded, no age group provided
 	public RaceByGroupView() {
@@ -55,6 +42,23 @@ public class RaceByGroupView {
 		
 		table = new JTable();
 		frame.getContentPane().add(table);
+	}
+	private void initialize_with_ag() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 1970, 799);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
+		for(int race_idx = 0; race_idx < this.raceGroup.get_heats().size(); race_idx++) {
+			Race loop_race = this.raceGroup.get_heats().get(race_idx);
+			Object[] col_names = new String[loop_race.get_num_racers()];
+			Object[][] row_vals = new Object[1][loop_race.get_num_racers()];
+			for(int l_racer = 0; l_racer < loop_race.get_num_racers(); l_racer++) {
+				col_names[l_racer] = loop_race.get_race_id() + String.format("_%d", l_racer+1);
+				row_vals[0][l_racer] = loop_race.get_racer_list().get(l_racer);
+				JTable table = new JTable(row_vals, col_names);
+				frame.getContentPane().add(table);
+			}
+		}
 	}
 
 }
