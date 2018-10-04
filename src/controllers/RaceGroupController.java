@@ -6,9 +6,14 @@ import java.util.ArrayList;
 import java.awt.event.*;
 
 public class RaceGroupController {
+	//PROPERTIES
+	RaceByGroupView rbgv;
 	PostSetupView root_view;
 	CupManager cm;
 	ArrayList<RaceGroupView> jPanels = new ArrayList<RaceGroupView>();
+	
+	//METHODS
+	
 	public RaceGroupController(CupManager cm) {
 		this.cm = cm;
 		this.setup_views();
@@ -37,6 +42,12 @@ public class RaceGroupController {
 					edit_race_dialog_init(current_group.get_race_by_id(rgv.race_list.getSelectedValue().toString(), false));
 				}
 			});
+			rgv.goto_race_view.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					goto_full_race_view(current_group);
+				}
+			});
 			this.jPanels.add(rgv);
 		}
 	}
@@ -49,6 +60,11 @@ public class RaceGroupController {
 	public void trigger_dialog(Racer r) {
 		System.out.println("trigger called");
 		RacerController rc = new RacerController(r);
+	}
+	
+	public void goto_full_race_view(AgeGroup ag) {
+		System.out.println("nice try big boi");
+		this.rbgv = new RaceByGroupView(ag);
 	}
 	
 }

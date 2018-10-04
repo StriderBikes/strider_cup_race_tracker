@@ -16,7 +16,7 @@ import java.awt.event.*;
  * this is the dialog that pops up
  * upon clicking the edit race button.
  * this view allows you to set the results of the
- * race and gives a checkbox if you wish to finalized the race and thereby disable 
+ * race and gives a checkbox to "finish" the race and thereby disable 
  * any future tampering with the results
  * @author nick.williams
  *
