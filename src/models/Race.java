@@ -4,6 +4,23 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
+/**
+ * this class represents our
+ * race objects, as such we will use it to store its
+ * racer objects as an array and then store the finish
+ * results in a hash map following a 
+ * finish_position -> racer_id schema
+ * 
+ * when in doubt i set my class properties to private and 
+ * wrote accessesors, this has proved to valuable as 
+ * I find myself putting logic that would be tempting to 
+ * place in the controller or view in these getters and 
+ * setters which helps me stick to fat models/skinny controller/views 
+ * design practice
+ * @author nick.williams
+ *
+ */
+
 public class Race {
 	private static int avg_race_time = 5;
 	protected Boolean timeOptimized = false;
