@@ -1,5 +1,5 @@
 package views;
-
+import models.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,7 +12,7 @@ public class RaceByGroupView {
 
 	private JFrame frame;
 	private JTable table;
-
+	public AgeGroup raceGroup;
 	/**
 	 * Launch the application.
 	 */
@@ -30,8 +30,16 @@ public class RaceByGroupView {
 	}
 
 	/**
+	 * overloading the only constructor method that
+	 * will be used for the time being, passing in 
+	 * our age group so that we can build a table 
+	 * of our race objects, FUN
 	 * Create the application.
 	 */
+	public RaceByGroupView(AgeGroup ag) {
+		initialize();
+	}
+	//not overloaded, no age group provided
 	public RaceByGroupView() {
 		initialize();
 	}
@@ -46,7 +54,6 @@ public class RaceByGroupView {
 		frame.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
 		
 		table = new JTable();
-		table.setTableHeader(new JTableHeader());
 		frame.getContentPane().add(table);
 	}
 
