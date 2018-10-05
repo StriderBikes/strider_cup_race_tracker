@@ -1,8 +1,11 @@
 package views;
 import models.*;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+
 import java.awt.GridLayout;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
@@ -86,7 +89,8 @@ public class RaceByGroupView {
 			this.row_values[ix] = row_race.get_race_table_vals();
 		}
 		JTable table = new JTable(this.row_values, this.col_names);
-		this.frame.add(table, "cell 1 2");
+		table.setFont(new Font("Serif", Font.BOLD, 20));
+		this.frame.add(new JScrollPane(table), "cell 1 2");
 	}
 
 }
