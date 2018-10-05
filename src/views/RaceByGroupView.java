@@ -88,10 +88,10 @@ public class RaceByGroupView {
 		for(int ix = 0; ix < this.raceGroup.get_heats().size(); ix++) {
 			Race row_race = this.raceGroup.get_heats().get(ix);
 			//this.row_values[ix][0] = row_race.get_race_id();
-			this.row_values[ix] = row_race.get_race_table_vals();
+			this.row_values[ix] = row_race.get_race_table_vals(ix, false);
 		}
 		JTable table = new JTable(this.row_values, this.col_names);
-		table.setFont(new Font("Serif", Font.BOLD, 20));
+		table.setFont(new Font("Serif", Font.PLAIN, 21));
 		table.setBackground(Color.CYAN);
 		this.frame.add(new JScrollPane(table), "cell 1 2");
 	}
