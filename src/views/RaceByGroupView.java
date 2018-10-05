@@ -1,5 +1,7 @@
 package views;
 import models.*;
+
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 
@@ -90,6 +92,7 @@ public class RaceByGroupView {
 		}
 		JTable table = new JTable(this.row_values, this.col_names);
 		table.setFont(new Font("Serif", Font.BOLD, 20));
+		table.setBackground(Color.CYAN);
 		this.frame.add(new JScrollPane(table), "cell 1 2");
 	}
 
