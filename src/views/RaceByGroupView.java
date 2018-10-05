@@ -89,12 +89,9 @@ public class RaceByGroupView {
 		for(int ix = 0; ix < this.raceGroup.get_heats().size(); ix++) {
 			Race row_race = this.raceGroup.get_heats().get(ix);
 			//this.row_values[ix][0] = row_race.get_race_id();
-			this.row_values[ix] = row_race.get_race_table_vals(ix, false);
-			if(this.row_values[ix].length > max_row_length) {
-				max_row_length = this.row_values.length;
-			}
+			this.row_values[ix] = row_race.get_race_table_vals(ix, false, this.col_names.length);
 		}
-		System.out.println(String.format("%d columns %d max row length", this.col_names.length, max_row_length));
+		//System.out.println(String.format("%d columns %d max row length", this.col_names.length, max_row_length));
 		JTable table = new JTable(this.row_values, this.col_names);
 		table.setFont(new Font("Serif", Font.PLAIN, 21));
 		table.setBackground(Color.CYAN);

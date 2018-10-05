@@ -92,9 +92,9 @@ public class Race {
 		return this.finishPositions;
 	}
 	
-	public Object[] get_race_table_vals(Integer ag_num_id, boolean is_main) {
+	public Object[] get_race_table_vals(Integer ag_num_id, boolean is_main, Integer required_length) {
 		String prefix = is_main ? "MAIN": "HEAT";
-		Object[] race_vals = new Object[this.num_racers+1];
+		Object[] race_vals = new Object[required_length];
 		this.ageGroupId = ag_num_id;
 		race_vals[0] = String.format("HEAT_%d", this.ageGroupId);
 		int valx = 0;
