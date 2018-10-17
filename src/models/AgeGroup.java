@@ -128,8 +128,7 @@ public class AgeGroup {
 		this.fill_heats_with_racers();
 	}
 	
-	// this will take the number of racers we have and systemitically 
-	// add them to heat races
+	// this will take the number of racers we have and pack them into race lists
 	private void fill_heats_with_racers() {
 		int ix = 0;
 		for(int x = 0; x < this.racers.size(); x++) {
