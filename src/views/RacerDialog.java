@@ -100,7 +100,11 @@ public class RacerDialog extends JDialog {
 		}
 		{
 			JLabel lblHeatFinish = new JLabel("Heat Finish");
-			contentPanel.add(lblHeatFinish, "cell 0 5,alignx trailing");
+			contentPanel.add(lblHeatFinish, "cell 0 5,alignx trailing");			
+		}
+		{
+			JLabel lblHeatVal = new JLabel(String.format("%d", this.racer.get_finish_dict().get("heat")));
+			contentPanel.add(lblHeatVal, "cell 1 5, alignx trailing");
 		}
 		{
 			JLabel lblNewLabel_1 = new JLabel("");

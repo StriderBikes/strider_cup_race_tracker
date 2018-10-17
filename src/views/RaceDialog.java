@@ -127,6 +127,7 @@ public class RaceDialog extends JDialog {
 			try {
 				Integer jNum = Integer.parseInt(this.position_inputs.get(ix).getText());
 				Racer u_racer = this.di_race.get_racer_by_id(jNum);
+				u_racer.set_finsish_postion("heat", ix);
 				Integer position = ix;
 				this.di_race.update_finish_map(position, u_racer);
 			} catch (java.lang.NumberFormatException er)
