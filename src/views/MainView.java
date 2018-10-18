@@ -74,7 +74,7 @@ public class MainView {
 		frame = new JFrame();
 		this.cm = new CupManager();
 		frame.setBounds(100, 100, 888, 632);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		// set up menue bar, not used at this time
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);

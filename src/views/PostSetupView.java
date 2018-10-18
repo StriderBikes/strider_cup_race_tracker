@@ -62,7 +62,7 @@ public class PostSetupView {
 		
 		JPanel panel = new JPanel();
 		this.tab_pane.addTab("Settings", null, panel, null);
-		
+		/*
 		btnAddGroups = new JButton("Add Groups");
 		panel.add(btnAddGroups);
 		btnAddGroups.addActionListener(new ActionListener() {
@@ -70,6 +70,7 @@ public class PostSetupView {
 				back_to_group_config();
 			}
 		});
+		*/
 	}
 	
 

@@ -17,6 +17,7 @@ public class RaceGroupController {
 	//PROPERTIES
 	RaceByGroupView rbgv;
 	PostSetupView root_view;
+	RaceController new_rc;
 	CupManager cm;
 	ArrayList<RaceGroupView> jPanels = new ArrayList<RaceGroupView>();
 	
@@ -67,7 +68,7 @@ public class RaceGroupController {
 	//instantiates race controller
 	public void edit_race_dialog_init(Race edit_race) {
 		System.out.println("editing race : " + edit_race.get_race_id());
-		RaceController new_rc = new RaceController(edit_race);
+		this.new_rc = new RaceController(edit_race);
 	}
 	//instantiates racer controller
 	public void trigger_dialog(Racer r) {

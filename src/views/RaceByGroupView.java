@@ -47,9 +47,9 @@ public class RaceByGroupView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("race frame");
 		frame.setBounds(100, 100, 1970, 799);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
 		
 		table = new JTable();
@@ -65,7 +65,7 @@ public class RaceByGroupView {
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1970, 799);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
 		/*
 		for(int race_idx = 0; race_idx < this.raceGroup.get_heats().size(); race_idx++) {
