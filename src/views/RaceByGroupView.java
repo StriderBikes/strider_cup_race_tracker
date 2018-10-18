@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 
 import java.awt.GridLayout;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 
@@ -79,6 +80,9 @@ public class RaceByGroupView {
 			}
 		}
 		*/
+		/**
+		 * gonna loop through our object setting up our table with a model
+		 */
 		this.col_names = new Object[this.raceGroup.get_heats().get(0).get_num_racers() + 1];
 		this.row_values = new Object[this.raceGroup.get_heats().size()][this.raceGroup.get_heats().get(0).get_num_racers() + 1];
 		this.col_names[0] = "Race Name/ID";
@@ -86,13 +90,14 @@ public class RaceByGroupView {
 		for(int x = 0; x < this.raceGroup.get_heats().get(0).get_num_racers(); x++) {
 			this.col_names[x+1] = String.format("%d pos", x+1);
 		}
+		DefaultTableModel tm = new DefaultTableModel(this.col_names, 0);
 		for(int ix = 0; ix < this.raceGroup.get_heats().size(); ix++) {
 			Race row_race = this.raceGroup.get_heats().get(ix);
 			//this.row_values[ix][0] = row_race.get_race_id();
-			this.row_values[ix] = row_race.get_race_table_vals(ix, false, this.col_names.length);
+			tm.addRow(row_race.get_race_table_vals(ix, false, this.col_names.length));
 		}
 		//System.out.println(String.format("%d columns %d max row length", this.col_names.length, max_row_length));
-		JTable table = new JTable(this.row_values, this.col_names);
+		JTable table = new JTable(tm);
 		table.setFont(new Font("Serif", Font.PLAIN, 21));
 		table.setBackground(Color.CYAN);
 		this.frame.add(new JScrollPane(table), "cell 1 2");
