@@ -24,7 +24,8 @@ public class RaceGroupView {
 		this.edit_race = new JButton("edit/view race");
 		this.edit_racer = new JButton("edit/view racer");
 		this.edit_main = new JButton("edit/view finals race");
-		this.goto_race_view = new JButton("view races in display view");
+		this.goto_race_view = new JButton("display view");
+		this.add_racer = new JButton("add racer");
 		return;
 	}
 	// buttons 
@@ -32,6 +33,7 @@ public class RaceGroupView {
 	public JButton edit_racer;
 	public JButton edit_race;
 	public JButton edit_main;
+	public JButton add_racer;
 	// lists
 	public JList race_list;
 	public JList racer_list;
@@ -62,9 +64,9 @@ public class RaceGroupView {
 		this.panel.add(this.edit_race);
 		this.panel.add(this.goto_race_view);
 		this.add_race_scroll_pane();
-		this.panel.add(new JLabel("            "));
+		this.panel.add(new JLabel("racers"));
 		this.panel.add(this.edit_racer);
-		this.panel.add(new JLabel("racer list"));
+		this.panel.add(this.add_racer);
 		this.add_racer_scroll_pane();
 		//this.panel.add(this.edit_main);
 		//this.panel.add(new JLabel("Finals race list"));
