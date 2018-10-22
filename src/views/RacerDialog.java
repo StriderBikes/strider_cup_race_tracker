@@ -47,7 +47,7 @@ public class RacerDialog extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public RacerDialog(Racer con_racer) {
+	public RacerDialog(Racer con_racer, Boolean is_new) {
 		this.racer = con_racer;
 		setBounds(100, 100, 607, 473);
 		getContentPane().setLayout(new BorderLayout());

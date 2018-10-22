@@ -68,9 +68,6 @@ public class RaceGroupView {
 		this.panel.add(this.edit_racer);
 		this.panel.add(this.add_racer);
 		this.add_racer_scroll_pane();
-		//this.panel.add(this.edit_main);
-		//this.panel.add(new JLabel("Finals race list"));
-		//this.add_main_race_scroll_pane();
 	}
 	
 }

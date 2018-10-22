@@ -13,4 +13,10 @@ public class RacerController {
 		System.out.println("constructed hit");
 	}
 	
+	public RacerController() {
+		this.racer = new Racer();
+		this.rd = new RacerDialog(this.racer);
+		System.out.println("new racer initialized");
+	}
+	
 }
