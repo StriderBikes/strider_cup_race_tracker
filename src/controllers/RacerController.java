@@ -13,8 +13,9 @@ public class RacerController {
 		System.out.println("constructed hit");
 	}
 	
-	public RacerController() {
-		this.racer = new Racer();
+	// jersey num should be the largest jersey number for that group + 1
+	public RacerController(Integer rg_id, Integer jersey_num) {
+		this.racer = new Racer(rg_id, jersey_num);
 		this.rd = new RacerDialog(this.racer);
 		System.out.println("new racer initialized");
 	}
