@@ -67,14 +67,14 @@ public class RaceGroupController {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					System.out.println("user clicked add racer");
-					add_racer(current_group.get_gid());
+					add_racer(current_group.get_gid(), current_group.get_num_racers());
 				}
 			});
 			this.jPanels.add(rgv);
 		}
 	}
-	public void add_racer(Integer racegroupID) {
-		this.rc = new RacerController(racegroupID, this.cm.get_racer_list().size()+101);
+	public void add_racer(Integer racegroupID, Integer num_racers) {
+		this.rc = new RacerController(racegroupID, num_racers + 102); // add 102 since we start at 101 and only add one racer at time
 	}
 	
 	//instantiates race controller

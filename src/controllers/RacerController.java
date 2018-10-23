@@ -20,4 +20,7 @@ public class RacerController {
 		System.out.println("new racer initialized");
 	}
 	
+	public Racer return_racer() {
+		return this.racer;
+	}
 }
