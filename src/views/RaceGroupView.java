@@ -70,4 +70,11 @@ public class RaceGroupView {
 		this.add_racer_scroll_pane();
 	}
 	
+	public void reload_racer_list(String[] new_list) {
+		this.panel.remove(this.racer_pane);
+		this.racer_list = new JList(new_list);
+		this.racer_pane = new JScrollPane(this.race_list);
+		this.panel.add(this.racer_pane);
+	}
+	
 }

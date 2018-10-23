@@ -79,8 +79,9 @@ public class RaceGroupController {
 	}
 	public void add_racer(Integer racegroupID, Integer num_racers) {
 		this.rc = new RacerController(racegroupID, num_racers + 102); // add 102 since we start at 101 and only add one racer at time
-		this.cm.get_age_group(racegroupID).get_full_racer_list().add(this.rc.return_racer());
-		this.jPanels.get(this.group_to_panel_map.get(racegroupID));
+		AgeGroup ag = this.cm.get_age_group(racegroupID);
+		ag.get_full_racer_list().add(this.rc.return_racer());
+		this.jPanels.get(this.group_to_panel_map.get(racegroupID)).reload_racer_list(ag.get_racer_ids_as_strings());
 	}
 	
 	//instantiates race controller
