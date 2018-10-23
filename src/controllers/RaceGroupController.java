@@ -18,6 +18,7 @@ public class RaceGroupController {
 	RaceByGroupView rbgv;
 	PostSetupView root_view;
 	RaceController new_rc;
+	RacerController rc;
 	CupManager cm;
 	ArrayList<RaceGroupView> jPanels = new ArrayList<RaceGroupView>();
 	
@@ -62,9 +63,20 @@ public class RaceGroupController {
 					goto_full_race_view(current_group);
 				}
 			});
+			rgv.add_racer.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					System.out.println("user clicked add racer");
+					add_racer(current_group.get_gid());
+				}
+			});
 			this.jPanels.add(rgv);
 		}
 	}
+	public void add_racer(Integer racegroupID) {
+		this.rc = new RacerController(racegroupID, this.cm.get_racer_list().size()+101);
+	}
+	
 	//instantiates race controller
 	public void edit_race_dialog_init(Race edit_race) {
 		System.out.println("editing race : " + edit_race.get_race_id());
