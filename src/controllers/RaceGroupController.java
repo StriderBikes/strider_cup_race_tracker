@@ -3,6 +3,8 @@ import factories.*;
 import views.*;
 import models.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.awt.event.*;
 
 /**
@@ -20,11 +22,12 @@ public class RaceGroupController {
 	RaceController new_rc;
 	RacerController rc;
 	CupManager cm;
+	// the following map property is used to store goupID's and 
+	//map them to the index of there group panel
+	Map<Integer, Integer> group_to_panel_map = new HashMap<Integer, Integer>(); 
 	ArrayList<RaceGroupView> jPanels = new ArrayList<RaceGroupView>();
-	
+
 	//METHODS
-	
-	
 	//constructor
 	public RaceGroupController(CupManager cm) {
 		this.cm = cm;
@@ -71,10 +74,13 @@ public class RaceGroupController {
 				}
 			});
 			this.jPanels.add(rgv);
+			this.group_to_panel_map.put(current_group.get_gid(), this.jPanels.indexOf(rgv));
 		}
 	}
 	public void add_racer(Integer racegroupID, Integer num_racers) {
 		this.rc = new RacerController(racegroupID, num_racers + 102); // add 102 since we start at 101 and only add one racer at time
+		this.cm.get_age_group(racegroupID).get_full_racer_list().add(this.rc.return_racer());
+		this.jPanels.get(this.group_to_panel_map.get(racegroupID));
 	}
 	
 	//instantiates race controller
