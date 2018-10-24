@@ -1,7 +1,11 @@
 package models;
 import java.util.ArrayList;
+
+import javax.swing.JFileChooser;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+
 public class CupManager {
 	//class variables
 	private int racer_id_last = 101; //start our racer Ids at 101 so that they can be used as jersey nums too
@@ -76,6 +80,9 @@ public class CupManager {
 			}
 			System.out.println("successfully saved config");
 			pw.close();
+			JFileChooser fchoose = new JFileChooser("race_group_config.csv");
+			fchoose.showSaveDialog();
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
