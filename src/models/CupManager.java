@@ -80,8 +80,6 @@ public class CupManager {
 			}
 			System.out.println("successfully saved config");
 			pw.close();
-			JFileChooser fchoose = new JFileChooser("race_group_config.csv");
-			fchoose.showSaveDialog();
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
