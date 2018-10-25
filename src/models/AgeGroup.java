@@ -127,24 +127,7 @@ public class AgeGroup {
 		System.out.println(String.format("created %d new heat races for race group: %s", num_races, this.group_title));
 		this.fill_heats_with_racers();
 	}
-	
-	// this will take the number of racers we have and pack them into race lists
-	private void fill_heats_with_racers() {
-		int ix = 0;
-		for(int x = 0; x < this.racers.size(); x++) {
-			this.heat_race_list.get(ix).add_racer(this.racers.get(x));
-			if (ix < this.heat_race_list.size()-1) {
-				ix++;
-			} else {
-				ix = 0;
-			}
-		}
-		for(int s = 0; s < this.heat_race_list.size(); s++) {
-			Race current = this.heat_race_list.get(s);
-			System.out.println(String.format("race %s created with %d racers",current.get_race_id(), current.get_racer_list().size()));
-		}
-		this.set_main_cutoffs();
-	}
+
 	// needed to display list of racer ids on main Race Group Page
 	public String[] get_racer_ids_as_strings() {
 		String[] out = new String[this.racers.size()];
@@ -216,5 +199,25 @@ public class AgeGroup {
 	// get the number of gates for this group
 	public int get_num_gates() {
 		return this.num_gates;
+	}
+	
+	//modifiers
+	
+	// this will take the number of racers we have and pack them into race lists
+	private void fill_heats_with_racers() {
+		int ix = 0;
+		for(int x = 0; x < this.racers.size(); x++) {
+			this.heat_race_list.get(ix).add_racer(this.racers.get(x));
+			if (ix < this.heat_race_list.size()-1) {
+				ix++;
+			} else {
+				ix = 0;
+			}
+		}
+		for(int s = 0; s < this.heat_race_list.size(); s++) {
+			Race current = this.heat_race_list.get(s);
+			System.out.println(String.format("race %s created with %d racers",current.get_race_id(), current.get_racer_list().size()));
+		}
+		this.set_main_cutoffs();
 	}
 }

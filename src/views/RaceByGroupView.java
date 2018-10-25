@@ -99,7 +99,6 @@ public class RaceByGroupView {
 		//System.out.println(String.format("%d columns %d max row length", this.col_names.length, max_row_length));
 		JTable table = new JTable(tm);
 		table.setFont(new Font("Serif", Font.PLAIN, 21));
-		table.setBackground(Color.CYAN);
 		this.frame.add(new JScrollPane(table), "cell 1 2");
 	}
 
