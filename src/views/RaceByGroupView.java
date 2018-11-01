@@ -24,7 +24,7 @@ public class RaceByGroupView {
 	public AgeGroup raceGroup;
 	public Object[] col_names;
 	public Object[][] row_values;
-	
+	public DefaultTableModel tm;
 	
 	/**
 	 * overloading the only constructor method that
@@ -90,7 +90,7 @@ public class RaceByGroupView {
 		for(int x = 0; x < this.raceGroup.get_heats().get(0).get_num_racers(); x++) {
 			this.col_names[x+1] = String.format("%d pos", x+1);
 		}
-		DefaultTableModel tm = new DefaultTableModel(this.col_names, 0);
+		this.tm = new DefaultTableModel(this.col_names, 0);
 		for(int ix = 0; ix < this.raceGroup.get_heats().size(); ix++) {
 			Race row_race = this.raceGroup.get_heats().get(ix);
 			//this.row_values[ix][0] = row_race.get_race_id();
