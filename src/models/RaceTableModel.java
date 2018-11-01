@@ -12,6 +12,27 @@ public class RaceTableModel extends AbstractTableModel{
 		this.columnNames = col_names;
 		this.data = data_vals;
 	}
+
+
+	@Override
+	public int getColumnCount() {
+		// TODO Auto-generated method stub
+		return this.columnNames.length;
+	}
+
+
+	@Override
+	public int getRowCount() {
+		// TODO Auto-generated method stub
+		return this.data.length;
+	}
+
+
+	@Override
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		return this.data[rowIndex][columnIndex];
+	}
 	
 	
 	
