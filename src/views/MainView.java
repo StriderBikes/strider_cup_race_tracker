@@ -51,6 +51,7 @@ public class MainView {
 	public MainView() {
 		initialize();
 	}
+	
 	/**
 	 * constructor overloading with cupManager object so we can reuse 
 	 * this UI to edit the groups after the fact
@@ -181,6 +182,7 @@ public class MainView {
 		int num_racers = Integer.valueOf(this.textField.getText());
 		this.add_age_group_to_manager(groupTitle, num_gates, num_racers);
 	}
+
 	// creates new group object instance and adds it to the group array held by CupManager
 	public void add_age_group_to_manager(String groupTitle, int num_gates, int num_racers) {
 		int new_id = this.cm.get_num_groups()+1;
@@ -189,6 +191,7 @@ public class MainView {
 		this.cm.add_new_group(new_AG);
 		this.add_age_group_to_tree(groupTitle, new_id, num_gates, num_racers);
 	}
+
 	// adds the values that were used to create the new group object to the tree display
 	public void add_age_group_to_tree(String gTitle, int gID, int gates, int racers) {
 		DefaultMutableTreeNode new_group = new DefaultMutableTreeNode(gTitle);
@@ -203,6 +206,7 @@ public class MainView {
 		DefaultTreeModel new_model = (DefaultTreeModel)this.groupTree.getModel();
 		new_model.reload();
 	}
+
 	// this is triggered by the create Event button and changes to our tab panel screen
 	public void set_up_races_and_goto_postsetup() {
 		// we start by getting our heat races set, main set up will be added once that schema is hashed out
@@ -214,10 +218,12 @@ public class MainView {
 		RaceGroupController rcg = new RaceGroupController(this.cm);
 		this.frame.dispose();
 	}
+
 	// used to call method on CupManager that saves its groups as a csv
 	public void save_config(ActionEvent e) {
 		this.cm.save_as_groups_csv();
 	}
+
 	public void load_saved_config() throws FileNotFoundException {
 		Scanner csv_scanner = new Scanner(new File("./race_group_config.csv"));
 		csv_scanner.nextLine();
@@ -228,6 +234,7 @@ public class MainView {
 		}
 		this.call_load_functions(groupList);
 	}
+
 	public void call_load_functions(ArrayList<String> import_groups) {
 		System.out.println(Integer.toString(import_groups.size()));
 		for(int x = 0; x < import_groups.size(); x++) {

@@ -41,6 +41,7 @@ public class RaceGroupController {
 		this.root_view = new PostSetupView(this.cm);
 		this.setup_race_group_tabs();
 	}
+
 	private void setup_race_group_tabs() {
 		RaceGroupTabFactory rgtf = new RaceGroupTabFactory(this.root_view.get_tab_pane());
 		for (int ix = 0; ix < this.cm.get_num_groups(); ix++) {
@@ -77,6 +78,7 @@ public class RaceGroupController {
 			this.group_to_panel_map.put(current_group.get_gid(), this.jPanels.indexOf(rgv));
 		}
 	}
+
 	public void add_racer(Integer racegroupID, Integer num_racers) {
 		this.rc = new RacerController(racegroupID, num_racers + 102); // add 102 since we start at 101 and only add one racer at time
 		AgeGroup ag = this.cm.get_age_group(racegroupID);
@@ -89,11 +91,13 @@ public class RaceGroupController {
 		System.out.println("editing race : " + edit_race.get_race_id());
 		this.new_rc = new RaceController(edit_race);
 	}
+
 	//instantiates racer controller
 	public void trigger_dialog(Racer r) {
 		System.out.println("trigger called");
 		RacerController rc = new RacerController(r);
 	}
+	
 	//instantiates full view controller
 	public void goto_full_race_view(AgeGroup ag) {
 		System.out.println("nice try big boi");

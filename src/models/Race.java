@@ -86,7 +86,7 @@ public class Race {
 	}
 	public void update_finish_map(Integer finish_position, Racer racer_object) {
 		this.finishPositions.put(finish_position, racer_object.get_jersey_number());
-		racer_object.set_finsish_postion(this.get_race_id(), finish_position);
+		racer_object.set_finish_postion(this.get_race_id(), finish_position);
 	}
 	public Map get_finish_map() {
 		return this.finishPositions;

@@ -77,7 +77,7 @@ public class RacerDialog extends JDialog {
 			contentPanel.add(lblGaurdianName, "cell 0 2,alignx trailing");
 		}
 		{
-			textField_2 = new JTextField(this.racer.get_racer_gaurdian());
+			textField_2 = new JTextField(this.racer.get_racer_guardian());
 			contentPanel.add(textField_2, "cell 1 2,growx");
 			textField_2.setColumns(10);
 		}
@@ -166,7 +166,7 @@ public class RacerDialog extends JDialog {
 			this.racer.set_jersey_number(Integer.parseInt(this.textField_1.getText()));
 		}
 		if(this.textField_2.getText() != "") {
-			this.racer.set_gaurdian(this.textField_2.getText());
+			this.racer.set_guardian(this.textField_2.getText());
 		}
 		/*
 		if(this.textField_3.getText() != "" && Integer.parseInt(this.textField_3.getText()) != this.racer.get_racer_group_id()) {

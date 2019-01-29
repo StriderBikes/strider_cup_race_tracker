@@ -3,7 +3,7 @@ import java.util.*;
 public class Racer {
 	String racer_name = "";
 	private Integer age = -1;
-	String gaurdName = "";
+	String guardName = "";
 	private Integer jerseyNumber;
 	Integer ageGroupId =0;
 	private Map<String, Integer> finish_postions = new HashMap<String,Integer>();
@@ -42,7 +42,7 @@ public class Racer {
 		return this.ageGroupId;
 	}
 	
-	public void set_finsish_postion(String race_id, Integer fp) {
+	public void set_finish_postion(String race_id, Integer fp) {
 		this.finish_postions.put(race_id, fp);
 	}
 	
@@ -60,10 +60,10 @@ public class Racer {
 		this.racer_name = new_name;
 	}
 	
-	public String get_racer_gaurdian() {
-		return this.gaurdName;
+	public String get_racer_guardian() {
+		return this.guardName;
 	}
-	public void set_gaurdian(String gaurd) {
-		this.gaurdName = gaurd;
+	public void set_guardian(String guard) {
+		this.guardName = guard;
 	}
 }
